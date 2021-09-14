@@ -1,39 +1,92 @@
 body {
     background-color: black;
     color: white;
-    margin-top: 7rem;
 }
 
+.hero-container {    
+    height: 80vh;
+
+    background: -webkit-gradient(linear, left bottom, left top, from(black), to(transparent)), url('https://mail.rbm.org.au/wp-content/uploads/2020/01/tumblr_static_old-skool-3d-cinema-audience_color.jpg') center no-repeat;
+    background: -o-linear-gradient(linear, left bottom, left top, from(black), to(transparent)), 
+    url('https://mail.rbm.org.au/wp-content/uploads/2020/01/tumblr_static_old-skool-3d-cinema-audience_color.jpg') 
+    center no-repeat;
+    background: linear-gradient(linear, left bottom, left top, from(black), to(transparent)), url('https://mail.rbm.org.au/wp-content/uploads/2020/01/tumblr_static_old-skool-3d-cinema-audience_color.jpg')
+     center no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.container-fluid {
+    padding-left: 0;   
+    padding-right: 0;
+}
+
+/* background and text */ 
+
 .bg-seet {
-    background-color: rgba(124, 124, 124, 0.5);
+    background-color: rgba(26, 26, 26, 0.9);
+}
+
+.text-gold {
+    color: rgba(199, 188, 101, 0.8)!important;
+}
+
+nav ul li a {
+    font-weight: 200!important;
+}
+
+.text-black {
+    color: black!important;
+}
+
+input {
+    color: white!important;
 }
 
 /* NAVBAR */
 
 .brand-logo {
     padding: 0 20px !important;
+    font-weight: 100 !important;
 }
 
 .nav-fixed {
     position: fixed;
     top: 0;
-    backdrop-filter: blur(3px);
+    z-index: 1;
+
+    backdrop-filter: blur(2px);
 }
 
 /* flash messages */ 
+
+.flashes {
+    margin-top: 5rem;
+}
 
 .flashes h4 {
     line-height: 2;
 }
 
-.flashes-box {
-    background-color: rgb(169 169 169 / 55%);
+.flashes-empty {
     margin: 0 20%;
+    color: black;
+    margin-top: 5.5rem;
+}
+
+.flashes-full {
+    background-color: rgba(199, 188, 101, 0.8);
     border-radius: 5px;
+    margin: 0 20%;
+    margin-top: 5.5rem;
+    color: black;
+    font-weight: 200;
 }
 
 /* Title */
 
 .title-page {
-    margin-top: 5rem;
+    font-weight: 100;
 }

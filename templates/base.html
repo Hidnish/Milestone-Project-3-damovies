@@ -19,15 +19,15 @@
 
     <nav class="nav-extend nav-fixed bg-seet">
         <div class="nav-wrapper">
-            <a href="{{ url_for('get_movies') }}" class="brand-logo">Da Movies</a>
+            <a href="{{ url_for('home') }}" class="brand-logo text-gold">Da Movies</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Catalogue</a></li>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('get_movies') }}">Catalogue</a></li>
                 <li><a href="#">Add Movies</a></li>
                 <li><a href="#">Profile</a></li>
-                <li><a href="{{ url_for('register') }}">Log-In/Register</a></li>
-                <li><a href="#">Log-Out</a></li>
+                <li><a href="{{ url_for('login') }}">Sign-In</a></li>
+                <li><a href="#">Sign-Out</a></li>
             </ul>
         </div>
     </nav>
@@ -36,23 +36,27 @@
         <li>
             <h4 class="center-align white">Da Movies</h4>
         </li>
-        <li><a href="{{ url_for('get_movies') }}">Home</a></li>
-        <li><a href="#">Catalogue</a></li>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('get_movies') }}">Catalogue</a></li>
         <li><a href="#">Add Movies</a></li>
         <li><a href="#">Profile</a></li>
-        <li><a href="{{ url_for('register') }}">Log-In/Register</a></li>
-        <li><a href="#">Log-Out</a></li>
+        <li><a href="{{ url_for('login') }}">Sign-In</a></li>
+        <li><a href="#">Sign-Out</a></li>
     </ul>
 
     <section>
         <!-- flash messages -->
         {% with messages = get_flashed_messages() %}
             {% if messages %}
-                    {% for message in messages %}
+                {% for message in messages %}
                     <div class="row flashes">
-                        <h4 class="center-align flashes-box">{{ message }}</h4>
+                        <h4 class="center-align flashes-full">{{ message }}</h4>
                     </div>
                 {% endfor %}
+            {% else %}
+                <div class="row flashes">
+                    <h4 class="center-align flashes-empty">.</h4>
+                </div>
             {% endif %}
         {% endwith %}
     </section>
