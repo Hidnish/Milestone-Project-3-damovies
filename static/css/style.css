@@ -1,3 +1,26 @@
 body {
-    background-color: aquamarine;
+    background-color: black;
+    color: white;
+}
+
+.bg-seet {
+    background-color: rgba(124, 124, 124, 0.5);
+}
+
+/* NAVBAR */
+
+.brand-logo {
+    padding: 0 20px !important;
+}
+
+.nav-fixed {
+    position: fixed;
+    top: 0;
+    backdrop-filter: blur(3px);
+}
+
+/* Title */
+
+.title-page {
+    margin-top: 5rem;
 }
