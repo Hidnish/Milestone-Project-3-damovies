@@ -1,44 +1,61 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
-        integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA==" crossorigin="anonymous" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"      
+        integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA=="
+        crossorigin="anonymous" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
         type="text/css">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
     {% block styles %}
     {% endblock %}
     <title>Da Movies</title>
 </head>
+
 <body>
 
     <nav class="nav-extend nav-fixed bg-seet">
         <div class="nav-wrapper">
-          <a href="{{ url_for('get_movies') }}" class="brand-logo">Da Movies</a>
-          <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
-          <ul class="right hide-on-med-and-down">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Catalogue</a></li>
-            <li><a href="#">Add Movies</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="{{ url_for('register') }}">Log-In/Register</a></li>
-            <li><a href="#">Log-Out</a></li>
-          </ul>
+            <a href="{{ url_for('get_movies') }}" class="brand-logo">Da Movies</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Catalogue</a></li>
+                <li><a href="#">Add Movies</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="{{ url_for('register') }}">Log-In/Register</a></li>
+                <li><a href="#">Log-Out</a></li>
+            </ul>
         </div>
-      </nav>
-    
-      <ul class="sidenav" id="mobile-demo">
-            <li><h4 class="center-align white">Da Movies</h4></li>
-            <li><a href="{{ url_for('get_movies') }}">Home</a></li>
-            <li><a href="#">Catalogue</a></li>
-            <li><a href="#">Add Movies</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="{{ url_for('register') }}">Log-In/Register</a></li>
-            <li><a href="#">Log-Out</a></li>
-      </ul>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+        <li>
+            <h4 class="center-align white">Da Movies</h4>
+        </li>
+        <li><a href="{{ url_for('get_movies') }}">Home</a></li>
+        <li><a href="#">Catalogue</a></li>
+        <li><a href="#">Add Movies</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="{{ url_for('register') }}">Log-In/Register</a></li>
+        <li><a href="#">Log-Out</a></li>
+    </ul>
+
+    <section>
+        <!-- flash messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                    {% for message in messages %}
+                    <div class="row flashes">
+                        <h4 class="center-align flashes-box">{{ message }}</h4>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </section>
 
     {% block content %}
     {% endblock %}
@@ -50,4 +67,5 @@
     {% block scripts %}
     {% endblock %}
 </body>
+
 </html>

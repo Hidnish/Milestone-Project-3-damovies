@@ -20,6 +20,18 @@ body {
     backdrop-filter: blur(3px);
 }
 
+/* flash messages */ 
+
+.flashes h4 {
+    line-height: 2;
+}
+
+.flashes-box {
+    background-color: rgb(169 169 169 / 55%);
+    margin: 0 20%;
+    border-radius: 5px;
+}
+
 /* Title */
 
 .title-page {
