@@ -7,27 +7,59 @@
     <div class="row">
         <form class="col s12 m8 offset-m2" method="POST" action="">
             <div class="card-panel black">
+                <!-- movie title -->
                 <div class="row">
 					<div class="input-field col s12">
-						<i class="fas fa-user-plus prefix white-text"></i>
-						<input id="username" name="username" type="text" minlength="5"
-                            maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-						<label for="username">Username</label>
+						<i class="fas fa-pencil-alt prefix white-text"></i>
+						<input id="title" name="title" type="text" minlength="2"
+                            maxlength="25" class="validate" required>
+						<label for="title">Title</label>
 					</div>
                 </div>
-                <!-- passowrd -->
+                <!-- director -->
+                <div class="row">
+					<div class="input-field col s12">
+						<i class="fas fa-video prefix white-text"></i>
+						<input id="director" name="director" type="text" minlength="5"
+                            maxlength="30" class="validate" required>
+						<label for="director">Director</label>
+					</div>
+                </div>
+                <!-- year -->
                 <div class="row">
                     <div class="input-field col s12">
-						<i class="fas fa-user-plus prefix white-text"></i>
-                        <input id="password" name="password" type="password" minlength="5"
-                            maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                        <label for="password">Password</label>
+                        <i class="fas fa-calendar-alt prefix white-text"></i>
+                        <input id="year_release" name="year_release" type="text" minlength="4"
+                            maxlength="4" pattern="^[0-9]{4}$" class="validate" required>
+                        <label for="year_release">Year of release: <em>Please enter year in correct format "yyyy"</em></label>
                     </div>
                 </div>
+                <!-- task description -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-align-left prefix"></i>
+                        <textarea id="plot" name="plot" min-lenght="5" max-lenght="200"
+                            class="materialize-textarea white-text validate" required></textarea>
+                        <label for="plot">Plot</label>
+                    </div>
+                </div>
+                <!-- image link -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-camera-retro prefix"></i>
+                        <input id="movie_image" name="movie_image" maxlength="1000"
+                            type="url" class="validate" aria-describedby="movie_image" pattern="https?://.+" onchange="DefaultImg();"> <!-- REMEMBERRR -->
+                        <label for="movie_image">Movie cover image: <em>Paste the image url, alternatively use our default image and skip this step</em></label>
+                    </div>
+                    <div class="s12 new-img img-container">
+                        <!-- Image preview container 
+                        <img class="img-window" src="#" alt="Preview of recipe image">
+                    </div>
+                </div>-->
                 <!-- login -->
                 <div class="row">
                     <button type="submit" class="col s12 btn-large bg-seet text-shadow">
-                        Sign-In <i class="fas fa-sign-in-alt"></i>
+                        Submit <i class="fas fa-sign-in-alt"></i>
                     </button>
                 </div>
             </div>
