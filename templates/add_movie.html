@@ -1,11 +1,12 @@
 {% extends "base.html" %}
+
 {% block content %}
 
-    <h3 class="thin center-align text-gold">Sign-In</h3>
+<h3 class="center-align thin text-gold">Add Movies</h2>
 
     <div class="row">
-        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
-            <div class="card-panel bg-seet">
+        <form class="col s12 m8 offset-m2" method="POST" action="">
+            <div class="card-panel black">
                 <div class="row">
 					<div class="input-field col s12">
 						<i class="fas fa-user-plus prefix white-text"></i>
@@ -17,7 +18,7 @@
                 <!-- passowrd -->
                 <div class="row">
                     <div class="input-field col s12">
-						<i class="fas fa-lock prefix white-text"></i>
+						<i class="fas fa-user-plus prefix white-text"></i>
                         <input id="password" name="password" type="password" minlength="5"
                             maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
                         <label for="password">Password</label>
@@ -25,7 +26,7 @@
                 </div>
                 <!-- login -->
                 <div class="row">
-                    <button type="submit" class="col s12 btn-large black text-shadow">
+                    <button type="submit" class="col s12 btn-large bg-seet text-shadow">
                         Sign-In <i class="fas fa-sign-in-alt"></i>
                     </button>
                 </div>
@@ -33,13 +34,4 @@
         </form>
     </div>
 
-    <div class="row">
-        <div class="col s12">
-            <p class="center-align">
-                Not registered yet?
-                <a href="{{ url_for('register') }}">Register</a>
-            </p>
-        </div>
-    </div>
-
-{% endblock %}
+    {% endblock %}

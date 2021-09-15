@@ -25,7 +25,7 @@
                     <li><a href="{{ url_for('home') }}">Home</a></li>
                     <li><a href="{{ url_for('get_movies') }}">Catalogue</a></li>
                 {% if session.user %}
-                    <li><a href="#">Add Movies</a></li>
+                    <li><a href="{{ url_for('add_movie') }}">Add Movies</a></li>
                     {% if session.user|lower == "admin"|lower %}
                         <li><a href="#">Manage Genres</a></li>
                     {% endif %}
@@ -45,7 +45,7 @@
         <li><a href="{{ url_for('home') }}">Home</a></li>
         <li><a href="{{ url_for('get_movies') }}">Catalogue</a></li>
         {% if session.user %}
-            <li><a href="#">Add Movies</a></li>
+            <li><a href="{{ url_for('add_movie') }}">Add Movies</a></li>
             {% if session.user|lower == "admin"|lower %}
                 <li><a href="#">Manage Genres</a></li>
             {% endif %}
@@ -59,17 +59,17 @@
     <section>
         <!-- flash messages -->
         {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        {% for message in messages %}
-        <div class="row flashes">
-            <h4 class="center-align flashes-full">{{ message }}</h4>
-        </div>
-        {% endfor %}
-        {% else %}
-        <div class="row flashes">
-            <h4 class="center-align flashes-empty">.</h4>
-        </div>
-        {% endif %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="row flashes">
+                        <h4 class="center-align flashes-full">{{ message }}</h4>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="row flashes">
+                    <h4 class="center-align flashes-empty">.</h4>
+                </div>
+            {% endif %}
         {% endwith %}
     </section>
 

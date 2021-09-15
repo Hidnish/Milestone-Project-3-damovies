@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2 class="center-align thin text-gold">Movie Catalogue</h2>
+<h3 class="center-align thin text-gold">Movie Catalogue</h2>
 
 <div class="row limit padding-2">
     {% for movie in movies %}
@@ -23,10 +23,10 @@
                     <span class="card-title"><i class="fas fa-times right"></i>
                         {{ movie.title }}</span>
                     <p> 
-                        {{ movie.director }}<br>
-                        {{ movie.year }}<br>
-                        {{ movie.genre }} <br>
-                        {{ movie.plot }}
+                        <em>Directed by :</em> {{ movie.director }}<br>
+                        <em>Year :</em> {{ movie.year }}<br>
+                        <em>Genre :</em> {{ movie.genre }} <br>
+                        <em>Plot :</em> {{ movie.plot }}
                     </p>
                 </div>
             </div>
