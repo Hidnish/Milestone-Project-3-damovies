@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+
 body {
     background-color: black;
     color: white;
@@ -39,19 +41,28 @@ input {
     color: white!important;
 }
 
+.gold-line {
+    border-bottom: 1px solid rgba(199, 188, 101, 0.8);
+    padding-bottom: 15px;
+}
+
 /* NAVBAR */
 
 .brand-logo {
     padding: 0 20px !important;
     font-weight: 100 !important;
+    font-family: 'Monoton', sans-serif;
 }
 
 .nav-fixed {
     position: fixed;
     top: 0;
     z-index: 3;
-
     backdrop-filter: blur(2px);
+}
+
+.padding-right{
+    padding-right: 20px;
 }
 
 /* flash messages */ 
