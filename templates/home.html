@@ -17,7 +17,7 @@
 
 <body>
 
-    <nav class="nav-extend nav-fixed bg-seet">
+    <nav class="nav-extend nav-fixed bg-seet golden-bottom">
         <div class="nav-wrapper">
             <a href="{{ url_for('home') }}" class="brand-logo text-gold">Da Movies</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
@@ -25,7 +25,7 @@
                     <li><a href="{{ url_for('home') }}">Home</a></li>
                     <li><a href="{{ url_for('get_movies') }}">Catalogue</a></li>
                 {% if session.user %}
-                    <li><a href="#">Add Movies</a></li>
+                    <li><a href="{{ url_for('add_movie') }}">Add Movies</a></li>
                     {% if session.user|lower == "admin"|lower %}
                         <li><a href="#">Manage Genres</a></li>
                     {% endif %}
@@ -45,7 +45,7 @@
         <li><a href="{{ url_for('home') }}">Home</a></li>
         <li><a href="{{ url_for('get_movies') }}">Catalogue</a></li>
         {% if session.user %}
-            <li><a href="#">Add Movies</a></li>
+            <li><a href="{{ url_for('add_movie') }}">Add Movies</a></li>
             {% if session.user|lower == "admin"|lower %}
                 <li><a href="#">Manage Genres</a></li>
             {% endif %}

@@ -9,6 +9,9 @@ body {
     font-weight: 100!important;
 }
 
+.extra-margin {
+    margin-bottom: 40px;
+}
 
 /* background and text */ 
 
@@ -16,8 +19,12 @@ body {
     background-color: rgb(19, 19, 19);
 }
 
+.bg-grey {
+    background-color: rgba(26, 26, 26);
+}
+
 .bg-seet {
-    background-color: rgba(26, 26, 26, 0.9);
+    background-color: rgba(26, 26, 26, .9);
 }
 
 .bg-seet-blur {
@@ -63,6 +70,10 @@ input {
 
 .padding-right{
     padding-right: 20px;
+}
+
+.golden-bottom {
+    border-bottom: 1px solid rgba(199, 188, 101, 0.8);
 }
 
 /* flash messages */ 
@@ -127,3 +138,39 @@ input {
     object-fit: cover;
     object-position: top;
 }
+/* experiment */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active
+{
+ -webkit-box-shadow: 0 0 0 30px rgb(19, 19, 19) inset !important;
+}
+
+input:-webkit-autofill
+{
+ -webkit-text-fill-color: white !important;
+}
+
+.btn-large:hover, .btn-small:hover {
+    background-color: rgba(136, 128, 54, 0.8);
+}
+
+nav ul a:hover {
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* media queries */
+
+@media (max-width: 575.98px) {
+
+    .brand-logo{
+        font-size: 16px!important;
+    }
+
+    .card-image img{
+        height: 500px;
+    }
+}
+
