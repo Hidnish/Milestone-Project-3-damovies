@@ -161,6 +161,10 @@ nav ul a:hover {
     background-color: rgba(0,0,0,0.4);
 }
 
+.dropdown-content li>a, .dropdown-content li>span {
+    color: black;
+}
+
 /* media queries */
 
 @media (max-width: 575.98px) {
