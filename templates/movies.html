@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="center-align thin text-gold extra-margin">Movie Catalogue</h2>
+<h3 class="center-align thin text-gold">Movie Catalogue</h2>
 
 <div class="row limit padding-2">
     {% for movie in movies| sort(attribute='title') %}
@@ -14,13 +14,14 @@
                         <img class="responsive-img" alt="Deafult image of movie" src="#">
                     {% endif %}
                 </div>
-                <div class="card-content bg-grey-dark">
+                <div class="card-content card-movie bg-grey-dark">
                     <span class="card-title activator white-text thin">
                         {{ movie.title }}
+                        <i class="fas fa-ellipsis-v right"></i>
                     </span>
-                {% if session.user|lower == movie.created_by|lower %}
-                    <a href="{{ url_for('delete', movie_id=movie._id) }}" class="btn-small light1 sure">Delete</a>
+                {% if (session.user|lower == movie.created_by|lower or session.user|lower == "amdin"|lower) %}
                     <a href="{{ url_for('edit_movie', movie_id=movie._id) }}" class="btn-small dark1">Edit</a>
+                    <a href="{{ url_for('delete', movie_id=movie._id) }}" class="btn-small light1 sure">Delete</a>
                 {% endif %}
                     
                 </div>

@@ -163,9 +163,10 @@ input {
     object-position: top;
 }
 
-.card-content{
+.card-movie {
     height: 110px;
 }
+
 /* experiment */
 
 input:-webkit-autofill,

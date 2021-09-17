@@ -27,7 +27,7 @@
                 {% if session.user %}
                     <li><a href="{{ url_for('add_movie') }}">Add Movies</a></li>
                     {% if session.user|lower == "admin"|lower %}
-                        <li><a href="#">Manage Genres</a></li>
+                        <li><a href="{{ url_for('get_genres') }}">Manage Genres</a></li>
                     {% endif %}
                     <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                     <li><a class="sure logout" href="{{ url_for('logout') }}">Sign-Out</a></li>
