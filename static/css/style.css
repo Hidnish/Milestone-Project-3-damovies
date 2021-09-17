@@ -13,6 +13,12 @@ body {
     margin-bottom: 40px;
 }
 
+.extra-margin2 {
+    margin-top: 40px;
+}
+
+/* buttons */
+
 .dark1 {
     background-color: rgba(199, 188, 101, 0.8)!important;
     color: black !important;
@@ -21,6 +27,10 @@ body {
 .light1 {
     background-color: black !important;
     color: rgba(199, 188, 101, 0.8) !important;
+}
+
+.btn-small {
+    height: 30px;
 }
 
 /* background and text */ 
@@ -61,6 +71,10 @@ input {
 .gold-line {
     border-bottom: 1px solid rgba(199, 188, 101, 0.8);
     padding-bottom: 15px;
+}
+
+.mild-red{
+    background-color: rgb(85, 22, 22);
 }
 
 /* NAVBAR */
@@ -147,6 +161,10 @@ input {
     height: 550px;
     object-fit: cover;
     object-position: top;
+}
+
+.card-content{
+    height: 110px;
 }
 /* experiment */
 
