@@ -5,9 +5,9 @@
 <h3 class="center-align thin text-gold">Add Movies</h2>
 
     <div class="row">
-        <form class="col s12 m8 offset-m2" method="POST" action="">
+        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('add_movie') }}">
             <div class="card-panel black">
-                <!-- category selection -->
+                <!-- genre selection -->
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="fas fa-folder-open prefix white-text"></i>
@@ -47,7 +47,7 @@
                         <label for="year_release">Year of release: <em>Format "yyyy"</em></label>
                     </div>
                 </div>
-                <!-- task description -->
+                <!-- plot description -->
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="fas fa-align-left prefix"></i>
@@ -60,19 +60,19 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="fas fa-camera-retro prefix"></i>
-                        <input id="movie_image" name="movie_image" maxlength="1000"
-                            type="url" class="validate" aria-describedby="movie_image" pattern="https?://.+" onchange="DefaultImg();"> <!-- REMEMBERRR -->
-                        <label for="movie_image">Movie cover image: <em> URL (optional)</em></label>
+                        <input id="cover_image" name="cover_image" maxlength="1000"
+                            type="url" class="validate" aria-describedby="cover_image" pattern="https?://.+" onchange="DefaultImg();"> <!-- REMEMBERRR -->
+                        <label for="cover_image">Movie cover image: <em> URL (optional)</em></label>
                     </div>
                     <div class="s12 new-img img-container">
                         <!-- Image preview container       REMEMBERRR
                         <img class="img-window" src="#" alt="Preview of recipe image">
                     </div>
                 </div>-->
-                <!-- login -->
+                <!-- submit button -->
                 <div class="row">
                     <button type="submit" class="col s12 btn-large bg-grey-dark text-shadow">
-                        Submit <i class="fas fa-sign-in-alt"></i>
+                        Add Movie <i class="fas fa-sign-in-alt"></i>
                     </button>
                 </div>
             </div>
