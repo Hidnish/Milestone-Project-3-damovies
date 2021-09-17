@@ -20,7 +20,7 @@
                     </span>
                 {% if session.user|lower == movie.created_by|lower %}
                     <a href="" class="btn-small light1">Done</a>
-                    <a href="" class="btn-small dark1">Edit</a>
+                    <a href="{{ url_for('edit_movie', movie_id=movie._id) }}" class="btn-small dark1">Edit</a>
                 {% endif %}
                     
                 </div>
