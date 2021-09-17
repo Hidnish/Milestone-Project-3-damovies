@@ -13,6 +13,16 @@ body {
     margin-bottom: 40px;
 }
 
+.dark1 {
+    background-color: rgba(199, 188, 101, 0.8)!important;
+    color: black !important;
+}
+
+.light1 {
+    background-color: black !important;
+    color: rgba(199, 188, 101, 0.8) !important;
+}
+
 /* background and text */ 
 
 .bg-grey-dark {
