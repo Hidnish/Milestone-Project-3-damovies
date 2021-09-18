@@ -17,6 +17,14 @@ body {
     margin-top: 40px;
 }
 
+.extra-margin-top {
+    margin-top: 15vh;
+}
+
+.extra-margin-side {
+    margin: 0 15vw
+}
+
 /* buttons */
 
 .dark1 {
