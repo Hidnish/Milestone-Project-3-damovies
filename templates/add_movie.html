@@ -4,7 +4,7 @@
 
 <h3 class="center-align thin text-gold">Add Movies</h2>
 
-    <div class="row">
+    <div class="row movie-margin">
         <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('add_movie') }}">
             <div class="card-panel black">
                 <!-- genre selection -->
@@ -64,11 +64,11 @@
                             type="url" class="validate" aria-describedby="cover_image" pattern="https?://.+" onchange="DefaultImg();"> <!-- REMEMBERRR -->
                         <label for="cover_image">Movie cover image: <em> URL (optional)</em></label>
                     </div>
-                    <div class="s12 new-img img-container">
-                        <!-- Image preview container       REMEMBERRR
+                    <!-- <div class="s12 new-img img-container">
+                        Image preview container       REMEMBERRR
                         <img class="img-window" src="#" alt="Preview of recipe image">
-                    </div>
-                </div>-->
+                    </div>-->
+                </div>
                 <!-- submit button -->
                 <div class="row center-align">
                     <button type="submit" class="btn-large bg-grey-dark text-shadow extra-margin2">

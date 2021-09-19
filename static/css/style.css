@@ -81,6 +81,10 @@ input {
     padding-bottom: 15px;
 }
 
+.gold-line-top {
+    border-top: 1px solid rgba(199, 188, 101, 0.8);
+}
+
 .mild-red{
     background-color: rgb(85, 22, 22);
 }
@@ -106,6 +110,10 @@ input {
 
 .golden-bottom {
     border-bottom: 1px solid rgba(199, 188, 101, 0.8);
+}
+
+.sidenav li a {
+    color: rgba(199, 188, 101, 0.8) !important;
 }
 
 /* flash messages */ 
@@ -151,6 +159,23 @@ input {
     background-size: cover;
 }
 
+.hero-container-2 {    
+    height: 80vh;
+
+    background: -webkit-gradient(linear, left bottom, left top, from(transparent), to(black)), url('https://media.vanityfair.com/photos/575f08bb18f5d45934b6fdce/master/pass/movie-theater-on-the-big-screen.jpg') center no-repeat;
+    background: -o-linear-gradient(linear, left bottom, left top, from(transparent), to(black)), 
+    url('https://media.vanityfair.com/photos/575f08bb18f5d45934b6fdce/master/pass/movie-theater-on-the-big-screen.jpg') 
+    center no-repeat;
+    background: linear-gradient(linear, left bottom, left top, from(transparent), to(black)), url('https://media.vanityfair.com/photos/575f08bb18f5d45934b6fdce/master/pass/movie-theater-on-the-big-screen.jpg')
+     center no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+
 .container-fluid {
     padding-left: 0;   
     padding-right: 0;
@@ -174,6 +199,40 @@ input {
 .card-movie {
     height: 110px;
 }
+
+/* profile */
+
+.profile-panel {
+    margin-bottom: 70vh;
+}
+
+/* genres */
+
+.genres-margin {
+    margin-bottom: 60vh;
+}
+
+.movie-margin {
+    margin-bottom: 200px;
+}
+
+/* footer */
+
+.page-footer {
+    height: 60px;
+}
+
+.footer-copyright {
+    margin-top: 10px;
+}
+
+footer {
+    clear: both;
+    position: relative;
+    height: 60px;
+    margin-top: -60px
+}
+
 
 /* experiment */
 
@@ -211,7 +270,7 @@ nav ul a:hover {
     }
 
     .card-image img{
-        height: 500px;
+        height: 400px;
     }
 }
 
