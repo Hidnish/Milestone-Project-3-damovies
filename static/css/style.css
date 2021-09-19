@@ -58,6 +58,7 @@ body {
 .bg-seet-blur {
     background-color: rgba(26, 26, 26, .95)!important;
     backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px)
 }
 
 .text-gold {
@@ -162,11 +163,11 @@ input {
 .hero-container-2 {    
     height: 80vh;
 
-    background: -webkit-gradient(linear, left bottom, left top, from(transparent), to(black)), url('https://media.vanityfair.com/photos/575f08bb18f5d45934b6fdce/master/pass/movie-theater-on-the-big-screen.jpg') center no-repeat;
+    background: -webkit-gradient(linear, left bottom, left top, from(transparent), to(black)), url('https://madisonmovie.files.wordpress.com/2014/08/adametokillfor.jpg') center no-repeat;
     background: -o-linear-gradient(linear, left bottom, left top, from(transparent), to(black)), 
-    url('https://media.vanityfair.com/photos/575f08bb18f5d45934b6fdce/master/pass/movie-theater-on-the-big-screen.jpg') 
+    url('https://madisonmovie.files.wordpress.com/2014/08/adametokillfor.jpg') 
     center no-repeat;
-    background: linear-gradient(linear, left bottom, left top, from(transparent), to(black)), url('https://media.vanityfair.com/photos/575f08bb18f5d45934b6fdce/master/pass/movie-theater-on-the-big-screen.jpg')
+    background: linear-gradient(linear, left bottom, left top, from(transparent), to(black)), url('https://madisonmovie.files.wordpress.com/2014/08/adametokillfor.jpg')
      center no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
