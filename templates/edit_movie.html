@@ -12,13 +12,13 @@
                     <div class="input-field col s12">
                         <i class="fas fa-folder-open prefix white-text"></i>
                         <select id="genre_name" name="genre_name" class="validate" required>
-                        <option value="" disabled>Choose Genre</option>
+                            <option value="" disabled>Choose Genre</option>
                             {% for genre in genres %}
-                                {% if genre.genre_name == movie.genre %}
-                                    <option value="{{ genre.genre_name }}" selected>{{ genre.genre_name }}</option>
-                                {% else %}
-                                    <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
-                                {% endif %}
+                            {% if genre.genre_name == movie.genre %}
+                            <option value="{{ genre.genre_name }}" selected>{{ genre.genre_name }}</option>
+                            {% else %}
+                            <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
+                            {% endif %}
                             {% endfor %}
                         </select>
                         <label for="genre_name">Movie Genre</label>
@@ -26,28 +26,28 @@
                 </div>
                 <!-- movie title -->
                 <div class="row">
-					<div class="input-field col s12">
-						<i class="fas fa-pencil-alt prefix white-text"></i>
-						<input id="title" name="title" type="text" minlength="2"
-                            value="{{ movie.title}}" maxlength="25" class="validate" required>
-						<label for="title">Title</label>
-					</div>
+                    <div class="input-field col s12">
+                        <i class="fas fa-pencil-alt prefix white-text"></i>
+                        <input id="title" name="title" type="text" minlength="2" value="{{ movie.title}}" maxlength="25"
+                            class="validate" required>
+                        <label for="title">Title</label>
+                    </div>
                 </div>
                 <!-- director -->
                 <div class="row">
-					<div class="input-field col s12">
-						<i class="fas fa-video prefix white-text"></i>
-						<input id="director" name="director" type="text" minlength="5"
-                        value="{{ movie.director}}" maxlength="30" class="validate" required>
-						<label for="director">Director</label>
-					</div>
+                    <div class="input-field col s12">
+                        <i class="fas fa-video prefix white-text"></i>
+                        <input id="director" name="director" type="text" minlength="5" value="{{ movie.director}}"
+                            maxlength="30" class="validate" required>
+                        <label for="director">Director</label>
+                    </div>
                 </div>
                 <!-- year -->
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="fas fa-calendar-alt prefix white-text"></i>
-                        <input id="year_release" name="year_release" type="text" minlength="4"
-                        value="{{ movie.year}}" maxlength="4" pattern="^[0-9]{4}$" class="validate" required>
+                        <input id="year_release" name="year_release" type="text" minlength="4" value="{{ movie.year}}"
+                            maxlength="4" pattern="^[0-9]{4}$" class="validate" required>
                         <label for="year_release">Year of release: <em>Format "yyyy"</em></label>
                     </div>
                 </div>
@@ -66,27 +66,26 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="fas fa-camera-retro prefix"></i>
-                        <input id="cover_image" name="cover_image" maxlength="1000"
-                        value="{{ movie.cover_image}}" type="url" class="validate" aria-describedby="cover_image" pattern="https?://.+" onchange="DefaultImg();"> <!-- REMEMBERRR -->
+                        <input id="cover_image" name="cover_image" maxlength="1000" value="{{ movie.cover_image}}"
+                            type="url" class="validate" aria-describedby="cover_image" pattern="https?://.+"
+                            onchange="DefaultImg();"> <!-- REMEMBERRR -->
                         <label for="cover_image">Movie cover image: <em> URL (optional)</em></label>
                     </div>
-                    <div class="s12 new-img img-container">
-                        <!-- Image preview container       REMEMBERRR
+                    <!--<div class="s12 new-img img-container">
+                         Image preview container       REMEMBERRR
                         <img class="img-window" src="#" alt="Preview of recipe image">
-                    </div>
-                </div>-->
-                <!-- edit/delete button -->
-                <div class="row">
-                    {% if ( session.user|lower == movie.created_by|lower) %}
-                    <div class="col s12 center-align extra-margin2">
-                    <a href="{{ url_for('get_movies') }}" class="btn-large mild-red text-shadow">
-                        Cancel <i class="fas fa-times-cirle-right"></i>
-                    </a>
-                    <button type="submit" class="btn-large bg-grey-dark text-shadow">
-                        Edit Movie <i class="fas fa-edit"></i>
-                    </button>
-                    {% endif %}
+                    </div>-->
                 </div>
+                    <!-- edit/delete button -->
+                <div class="row">
+                    <div class="col s12 center-align extra-margin2">
+                        <a href="{{ url_for('get_movies') }}" class="btn-large mild-red text-shadow">
+                            Cancel <i class="fas fa-times-cirle-right"></i>
+                        </a>
+                        <button type="submit" class="btn-large bg-grey-dark text-shadow">
+                            Edit Movie <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </form>

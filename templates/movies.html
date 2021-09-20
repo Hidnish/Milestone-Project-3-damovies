@@ -19,7 +19,7 @@
                         {{ movie.title }}
                         <i class="fas fa-ellipsis-v right"></i>
                     </span>
-                {% if (session.user|lower == movie.created_by|lower or session.user|lower == "amdin"|lower) %}
+                {% if session.user|lower == movie.created_by|lower or session.user|lower == "admin"|lower %}
                     <a href="{{ url_for('edit_movie', movie_id=movie._id) }}" class="btn-small dark1">Edit</a>
                     <a href="{{ url_for('delete', movie_id=movie._id) }}" class="btn-small light1 sure">Delete</a>
                 {% endif %}

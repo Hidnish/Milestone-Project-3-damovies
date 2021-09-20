@@ -27,6 +27,12 @@ def home():
 @app.route("/get_movies")
 def get_movies():
     movies = list(mongo.db.movies.find())
+    for movie in movies:
+        try:
+            user = mongo.db.users.find_one({'_id': movie['created_by']})
+            movie['created_by'] = user['username']
+        except:
+            pass
     return render_template("movies.html", movies=movies)
 
 
@@ -100,6 +106,7 @@ def logout():
 @app.route("/add_movie", methods=["GET", "POST"])
 def add_movie():
     if request.method == "POST":
+        user = mongo.db.users.find_one({'username': session["user"]})
         movie = {
             "title": request.form.get("title"),
             "cover_image": request.form.get("cover_image"),
@@ -107,7 +114,7 @@ def add_movie():
             "genre": request.form.get("genre_name"),
             "plot": request.form.get("plot"),
             "year": request.form.get("year_release"),
-            "created_by": session["user"]
+            "created_by": ObjectId(user['_id'])
         }
         mongo.db.movies.insert_one(movie)
         flash("Thank you, movie successfully added!")
@@ -119,6 +126,7 @@ def add_movie():
 @app.route("/edit_movie/<movie_id>", methods=["GET", "POST"])
 def edit_movie(movie_id):
     if request.method == "POST":
+        user = mongo.db.users.find_one({'username': session["user"]})
         edmovie = {
             "title": request.form.get("title"),
             "cover_image": request.form.get("cover_image"),
@@ -126,10 +134,11 @@ def edit_movie(movie_id):
             "genre": request.form.get("genre_name"),
             "plot": request.form.get("plot"),
             "year": request.form.get("year_release"),
-            "created_by": session["user"]
+            "created_by": ObjectId(user['_id'])
         }
         mongo.db.movies.update({"_id": ObjectId(movie_id)}, edmovie)
         flash("Thank you, movie successfully updated!")
+        return redirect(url_for("get_movies"))
 
     movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
     genres = mongo.db.genres.find().sort("genre_name", 1)
