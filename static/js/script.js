@@ -5,7 +5,7 @@ $(document).ready(function () {
       if ($(this).hasClass("logout")) {
         return confirm("Are you sure you want to sign out?");
       } else {
-        return confirm("Are you sure you want to delete this movie?");
+        return confirm("Are you sure you want to delete this item?");
       }
   })
 

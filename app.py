@@ -28,14 +28,11 @@ def home():
 def get_movies():
     movies = list(mongo.db.movies.find())
     for movie in movies:
-        try:
-            # convert user and genre's ID to username and genre_name 
-            user = mongo.db.users.find_one({'_id': movie['created_by']})
-            genre = mongo.db.genres.find_one({'_id': movie['genre']})
-            movie['created_by'] = user['username']
-            movie['genre'] = genre['genre_name']
-        except:
-            pass
+        # convert user and genre's ID to username and genre_name for display
+        user = mongo.db.users.find_one({'_id': movie['created_by']})
+        genre = mongo.db.genres.find_one({'_id': movie['genre']})
+        movie['created_by'] = user['username']
+        movie['genre'] = genre['genre_name']
     return render_template("movies.html", movies=movies)
 
 
@@ -126,6 +123,7 @@ def add_movie():
         mongo.db.movies.insert_one(movie)
         flash("Thank you, movie successfully added!")
         return redirect(url_for("get_movies"))
+
     genres = mongo.db.genres.find().sort("genre_name", 1)
     return render_template("add_movie.html", genres=genres)
 
@@ -134,11 +132,13 @@ def add_movie():
 def edit_movie(movie_id):
     if request.method == "POST":
         user = mongo.db.users.find_one({'username': session["user"]})
+        genre = mongo.db.genres.find_one(
+            {'genre_name': request.form.get("genre_name")})
         edmovie = {
             "title": request.form.get("title"),
             "cover_image": request.form.get("cover_image"),
             "director": request.form.get("director"),
-            "genre": request.form.get("genre_name"),
+            "genre": ObjectId(genre['_id']),
             "plot": request.form.get("plot"),
             "year": request.form.get("year_release"),
             "created_by": ObjectId(user['_id'])
@@ -152,8 +152,8 @@ def edit_movie(movie_id):
     return render_template("edit_movie.html", movie=movie, genres=genres)
 
 
-@app.route("/delete/<movie_id>")
-def delete(movie_id):
+@app.route("/delete_movie/<movie_id>")
+def delete_movie(movie_id):
     mongo.db.movies.remove({"_id": ObjectId(movie_id)})
     flash("Movie sucessfully deleted!")
     return redirect(url_for("get_movies"))
@@ -176,6 +176,27 @@ def add_genre():
         return redirect(url_for("get_genres"))
 
     return render_template("add_genre.html")
+
+
+@app.route("/edit_genre/<genre_id>", methods=["GET", "POST"])
+def edit_genre(genre_id):
+    if request.method == "POST":
+        genre_upd = {
+            "genre_name": request.form.get("genre_name")
+        }
+        mongo.db.genres.update({"_id": ObjectId(genre_id)}, genre_upd)
+        flash("Genre Updated")
+        return redirect(url_for("get_genres"))
+
+    genre = mongo.db.genres.find_one({"_id": ObjectId(genre_id)})
+    return render_template("edit_genre.html", genre=genre)
+
+
+@app.route("/delete_genre/<genre_id>")
+def delete_genre(genre_id):
+    mongo.db.genres.remove({"_id": ObjectId(genre_id)})
+    flash("Genre sucessfully deleted!")
+    return redirect(url_for("get_genres"))
 
 
 if __name__ == "__main__":

@@ -18,8 +18,9 @@
                     <div class="card bg-grey center-align">
                         <div class="card-content white-text">
                             <span class="card-title">{{ genre.genre_name }} 
-                            <a href="" class="btn dark1 right">Edit</a>
-                            <a href="" class="btn light1 right">Delete</a></span>
+                            <a href="{{ url_for('edit_genre', genre_id=genre._id) }}" class="btn dark1 right">Edit</a>
+                            <a href="{{ url_for('delete_genre', genre_id=genre._id) }}" 
+                                class="btn light1 right sure">Delete</a></span>
                         </div>
                     </div>
                 </div>
