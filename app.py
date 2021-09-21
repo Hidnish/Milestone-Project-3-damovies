@@ -29,8 +29,11 @@ def get_movies():
     movies = list(mongo.db.movies.find())
     for movie in movies:
         try:
+            # convert user and genre's ID to username and genre_name 
             user = mongo.db.users.find_one({'_id': movie['created_by']})
+            genre = mongo.db.genres.find_one({'_id': movie['genre']})
             movie['created_by'] = user['username']
+            movie['genre'] = genre['genre_name']
         except:
             pass
     return render_template("movies.html", movies=movies)
@@ -106,12 +109,16 @@ def logout():
 @app.route("/add_movie", methods=["GET", "POST"])
 def add_movie():
     if request.method == "POST":
+        # connect movie to user who posted it through user's ID
         user = mongo.db.users.find_one({'username': session["user"]})
+        # connect movie to genre through genre's ID
+        genre = mongo.db.genres.find_one(
+            {'genre_name': request.form.get("genre_name")})
         movie = {
             "title": request.form.get("title"),
             "cover_image": request.form.get("cover_image"),
             "director": request.form.get("director"),
-            "genre": request.form.get("genre_name"),
+            "genre": ObjectId(genre['_id']),
             "plot": request.form.get("plot"),
             "year": request.form.get("year_release"),
             "created_by": ObjectId(user['_id'])
@@ -156,6 +163,19 @@ def delete(movie_id):
 def get_genres():
     genres = list(mongo.db.genres.find().sort("category_name", 1))
     return render_template("genres.html", genres=genres)
+
+
+@app.route("/add_genre", methods=["GET", "POST"])
+def add_genre():
+    if request.method == "POST":
+        genre = {
+            "genre_name": request.form.get("genre_name")
+        }
+        mongo.db.genres.insert_one(genre)
+        flash("New Genre Added")
+        return redirect(url_for("get_genres"))
+
+    return render_template("add_genre.html")
 
 
 if __name__ == "__main__":
