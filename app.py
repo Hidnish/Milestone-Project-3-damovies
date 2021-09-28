@@ -209,17 +209,20 @@ def delete_genre(genre_id):
 
 @app.route("/rate_movie/<movie_id>", methods=["GET", "POST"])
 def rate_movie(movie_id):
-    rating = request.form.get("rating")
+    rating = int(request.form.get("rating"))
     user = mongo.db.users.find_one({'username': session["user"]})
     user_id = ObjectId(user['_id'])
-    existing_rating = mongo.db.movies.find_one({"_id": ObjectId(movie_id),"ratings.user": user_id})
+    existing_rating = mongo.db.movies.find_one(
+        {"_id": ObjectId(movie_id), "ratings.user": user_id})
 
     #https://stackoverflow.com/questions/10522347/mongodb-update-objects-in-a-documents-array-nested-updating
     if existing_rating:
-        mongo.db.movies.update({"_id": ObjectId(movie_id), "ratings.user": user_id}, {"$set": {"ratings.$.rating": rating}})
+        mongo.db.movies.update({"_id": ObjectId(movie_id),
+            "ratings.user": user_id}, {"$set": {"ratings.$.rating": rating}})
         flash("Rating Updated")
     else:
-        mongo.db.movies.update({"_id": ObjectId(movie_id)}, {"$push": {'ratings': {'rating': rating, 'user': user_id}}})
+        mongo.db.movies.update({"_id": ObjectId(movie_id)}, {"$push": {
+            'ratings': {'rating': rating, 'user': user_id}}})
         flash("Rating Added")
 
     return redirect(url_for('get_movies'))
