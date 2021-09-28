@@ -13,6 +13,10 @@ body {
     margin-bottom: 40px;
 }
 
+.extra-mg-bt {
+    margin-bottom: 50vh;
+}
+
 .extra-margin2 {
     margin-top: 40px;
 }
@@ -25,6 +29,9 @@ body {
     margin: 0 15vw
 }
 
+.mt-0 {
+    margin: 0;
+}
 /* buttons */
 
 .dark1 {
@@ -39,6 +46,10 @@ body {
 
 .btn-small {
     height: 30px;
+}
+
+.golden-border {
+    border: 1px solid rgba(199, 188, 101, 0.8)
 }
 
 /* background and text */ 
@@ -88,6 +99,10 @@ input {
 
 .mild-red{
     background-color: rgb(85, 22, 22);
+}
+
+.mild-red-text{
+    color: rgb(85, 22, 22);
 }
 
 /* NAVBAR */
@@ -250,9 +265,10 @@ input:-webkit-autofill
  -webkit-text-fill-color: white !important;
 }
 
-.btn-large:hover, .btn-small:hover {
+.btn-large:hover, .btn-small:hover{
     background-color: rgba(136, 128, 54, 0.8);
 }
+
 
 nav ul a:hover {
     background-color: rgba(0,0,0,0.4);
@@ -273,5 +289,12 @@ nav ul a:hover {
     .card-image img{
         height: 400px;
     }
+}
+
+@media (max-width: 590px) {
+
+   .lil{
+       font-size: 20px;
+   }
 }
 
