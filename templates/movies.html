@@ -1,15 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3 class="center-align thin text-gold extra-margin">Movie Catalogue</h2>
+<h3 class="center-align thin text-gold extra-margin">Movie Catalogue</h2>
 
     <div class="row card-panel light1">
+
         <form class="col s10 offset-s1 l6" action="{{ url_for('search') }}" method="post" class="col s12">
             <div class="row center-align">
                 <div class="input-field mt-0 col s12 m6">
                     <i class="fas fa-search prefix text-gold"></i>
                     <input type="text" name="query" id="query" minlength="3" class="validate" required>
-                    <label for="query">Search Tasks</label>
+                    <label for="query">Search Movies</label>
                 </div>
                 <div class="col s12 m6">
                     <a href="{{ url_for('get_movies') }}" class="btn light1 golden-border text-shadow">Reset</a>
@@ -52,15 +53,45 @@
                         <em>Year :</em> <strong>{{ movie.year }}</strong><br>
                         <em>Genre :</em> <strong>{{ movie.genre }}</strong> <br>
                         <em>Plot :</em> <strong>{{ movie.plot }}</strong> <br><br>
-                        <p><em>Posted by: <strong>{{ movie.created_by }}</strong></em></p>
+                        <em>Posted by: <strong>{{ movie.created_by }}</strong></em>
                     </p>
+
+                    <form method="POST" action="{{ url_for('rate_movie', movie_id=movie._id) }}">
+                        <label>
+                            <input id="1" name="rating" value="1" type="radio"/>
+                            <span>1</span>
+                        </label>
+                        <label>
+                            <input id="2" name="rating" value="2" type="radio"/>
+                            <span>2</span>
+                        </label>
+                        <label>
+                            <input id="3" name="rating" value="3" type="radio"/>
+                            <span>3</span>
+                        </label>
+                        <label>
+                            <input id="4" name="rating" value="4" type="radio"/>
+                            <span>4</span>
+                        </label>
+                        <label>
+                            <input id="5" name="rating" value="5" type="radio"/>
+                            <span>5</span>
+                        </label>
+                        <label>
+                            <input name="rating" type="radio" checked/>
+                            <span>None</span>
+                        </label>
+                        <button type="submit" class="btn-small bg-grey-dark text-shadow">
+                            Submit rating 
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
     {% else%}
-        <h4 class="center-align mild-red-text extra-mg-bt">No movie found</h2>
-    {% endif%}
+    <h4 class="center-align mild-red-text extra-mg-bt">No movie found</h2>
+        {% endif%}
 
-    {% endblock %}
+        {% endblock %}
