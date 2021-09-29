@@ -52,13 +52,17 @@
                         <em>Directed by :</em> <strong>{{ movie.director }}</strong><br>
                         <em>Year :</em> <strong>{{ movie.year }}</strong><br>
                         <em>Genre :</em> <strong>{{ movie.genre }}</strong> <br>
-                        <em>Plot :</em> <strong>{{ movie.plot }}</strong> <br><br>
+                        <em>Plot :</em> <strong>{{ movie.plot }}</strong> <br><br><br>
                         <em>Posted by: <strong>{{ movie.created_by }}</strong></em>
+                    </p><br>
+                    <hr>
+                    <p>
+                        Average Rating by Users: <strong class="text-gold">{{ movie.average.average }}/5</strong>
                     </p>
 
                     <form method="POST" action="{{ url_for('rate_movie', movie_id=movie._id, movie_title=movie.title) }}">
                         <label>
-                            <input id="1" name="rating" value="1" type="radio" checked/>
+                            <input id="1" name="rating" value="1" type="radio" required/>
                             <span class ="margin-right">1</span>
                         </label>
                         <label>
@@ -81,8 +85,6 @@
                             Submit rating 
                         </button>
                     </form>
-
-                    {{ movie.ratings }}
                 </div>
             </div>
         </div>
