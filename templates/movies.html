@@ -5,7 +5,7 @@
 
     <div class="row card-panel light1">
 
-        <form class="col s10 offset-s1 l6" action="{{ url_for('search') }}" method="post" class="col s12">
+        <form class="col s10 offset-s1 l6 offset-l3" action="{{ url_for('search') }}" method="post" class="col s12">
             <div class="row center-align">
                 <div class="input-field mt-0 col s12 m6">
                     <i class="fas fa-search prefix text-gold"></i>
@@ -56,35 +56,33 @@
                         <em>Posted by: <strong>{{ movie.created_by }}</strong></em>
                     </p>
 
-                    <form method="POST" action="{{ url_for('rate_movie', movie_id=movie._id) }}">
+                    <form method="POST" action="{{ url_for('rate_movie', movie_id=movie._id, movie_title=movie.title) }}">
                         <label>
-                            <input id="1" name="rating" value="1" type="radio"/>
-                            <span>1</span>
+                            <input id="1" name="rating" value="1" type="radio" checked/>
+                            <span class ="margin-right">1</span>
                         </label>
                         <label>
                             <input id="2" name="rating" value="2" type="radio"/>
-                            <span>2</span>
+                            <span class ="margin-right">2</span>
                         </label>
                         <label>
                             <input id="3" name="rating" value="3" type="radio"/>
-                            <span>3</span>
+                            <span class ="margin-right">3</span>
                         </label>
                         <label>
                             <input id="4" name="rating" value="4" type="radio"/>
-                            <span>4</span>
+                            <span class ="margin-right">4</span>
                         </label>
                         <label>
                             <input id="5" name="rating" value="5" type="radio"/>
-                            <span>5</span>
-                        </label>
-                        <label>
-                            <input name="rating" type="radio" checked/>
-                            <span>None</span>
-                        </label>
+                            <span class ="margin-right">5</span>
+                        </label><br>
                         <button type="submit" class="btn-small bg-grey-dark text-shadow">
                             Submit rating 
                         </button>
                     </form>
+
+                    {{ movie.ratings }}
                 </div>
             </div>
         </div>

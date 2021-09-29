@@ -27,12 +27,23 @@ def home():
 @app.route("/get_movies")
 def get_movies():
     movies = list(mongo.db.movies.find())
+
+    avg_rating = mongo.db.movies.aggregate([{"$unwind": "$ratings"}, 
+        {"$group": {"_id": "$title", "average": {"$avg": "$ratings.rating"}}}])
+    for avg in avg_rating:
+        print(avg)
+
     for movie in movies:
         # convert user and genre's ID to username and genre_name for display
         user = mongo.db.users.find_one({'_id': movie['created_by']})
         genre = mongo.db.genres.find_one({'_id': movie['genre']})
         movie['created_by'] = user['username']
         movie['genre'] = genre['genre_name']
+
+        #for avg in avg_rating:
+           # if str(avg['_id']) == movie['title']:
+            #    movie['ratings'] = avg['average']
+
     return render_template("movies.html", movies=movies)
 
 
@@ -207,23 +218,31 @@ def delete_genre(genre_id):
     return redirect(url_for("get_genres"))
 
 
-@app.route("/rate_movie/<movie_id>", methods=["GET", "POST"])
-def rate_movie(movie_id):
+@app.route("/rate_movie/<movie_id>/<movie_title>", methods=["GET", "POST"])
+def rate_movie(movie_id, movie_title):
     rating = int(request.form.get("rating"))
     user = mongo.db.users.find_one({'username': session["user"]})
     user_id = ObjectId(user['_id'])
     existing_rating = mongo.db.movies.find_one(
         {"_id": ObjectId(movie_id), "ratings.user": user_id})
 
-    #https://stackoverflow.com/questions/10522347/mongodb-update-objects-in-a-documents-array-nested-updating
+    # https://stackoverflow.com/questions/10522347/mongodb-update-objects-in-a-documents-array-nested-updating
     if existing_rating:
         mongo.db.movies.update({"_id": ObjectId(movie_id),
             "ratings.user": user_id}, {"$set": {"ratings.$.rating": rating}})
         flash("Rating Updated")
     else:
         mongo.db.movies.update({"_id": ObjectId(movie_id)}, {"$push": {
-            'ratings': {'rating': rating, 'user': user_id}}})
+            "ratings": {"rating": rating, "user": user_id}}})
         flash("Rating Added")
+
+    avg_rating = mongo.db.movies.aggregate([{"$unwind": "$ratings"}, {"$group": {"_id": "$title", "average": {"$avg": "$ratings.rating"}}}])
+    avg_var = {}
+    for avg in avg_rating:
+        if str(avg["_id"]) == movie_title:
+            avg_var = avg
+            print(avg_var)
+    mongo.db.movies.update({"_id": ObjectId(movie_id)}, {"$set": {"average": avg_var}})
 
     return redirect(url_for('get_movies'))
 
