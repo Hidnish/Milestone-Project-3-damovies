@@ -34,7 +34,7 @@
 					<div class="input-field col s12">
 						<i class="fas fa-video prefix white-text"></i>
 						<input id="director" name="director" type="text" minlength="5"
-                            maxlength="30" class="validate" required>
+                            maxlength="40" class="validate" required>
 						<label for="director">Director</label>
 					</div>
                 </div>
@@ -61,13 +61,9 @@
                     <div class="input-field col s12">
                         <i class="fas fa-camera-retro prefix"></i>
                         <input id="cover_image" name="cover_image" maxlength="1000"
-                            type="url" class="validate" aria-describedby="cover_image" pattern="https?://.+" onchange="DefaultImg();"> <!-- REMEMBERRR -->
-                        <label for="cover_image">Movie cover image: <em> URL (optional)</em></label>
+                            type="url" class="validate" aria-describedby="cover_image" pattern="https?://.+" required>
+                        <label for="cover_image">Movie cover image: <em> URL </em></label>
                     </div>
-                    <!-- <div class="s12 new-img img-container">
-                        Image preview container       REMEMBERRR
-                        <img class="img-window" src="#" alt="Preview of recipe image">
-                    </div>-->
                 </div>
                 <!-- submit button -->
                 <div class="row center-align">

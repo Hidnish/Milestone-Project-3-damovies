@@ -21,6 +21,14 @@ body {
     margin-top: 40px;
 }
 
+.margin-top {
+    margin-top: 10px;
+}
+
+.margin-top-2 {
+    margin-top: 20px
+}
+
 .extra-margin-top {
     margin-top: 15vh;
 }
@@ -33,7 +41,7 @@ body {
     margin-right: 7px;
 }
 
-.mt-0 {
+.m-0 {
     margin: 0;
 }
 
@@ -200,8 +208,6 @@ input {
     background-size: cover;
 }
 
-
-
 .container-fluid {
     padding-left: 0;   
     padding-right: 0;
@@ -224,6 +230,16 @@ input {
 
 .card-movie {
     height: 110px;
+}
+
+.title-small{
+    font-size: 18px;
+}
+
+.comment-box{
+    padding: 5px;
+    background-color: rgb(19, 19, 19);
+    border-radius: 5px;
 }
 
 /* profile */
@@ -292,7 +308,7 @@ nav ul a:hover {
 
 @media (max-width: 575.98px) {
 
-    .brand-logo{
+    .logo-flex{
         font-size: 16px!important;
     }
 

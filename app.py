@@ -43,6 +43,11 @@ def search():
 
     query = request.form.get("query")
     movies = list(mongo.db.movies.find({"$text": {"$search": query}}))
+    for movie in movies:
+        user = mongo.db.users.find_one({'_id': movie['created_by']})
+        genre = mongo.db.genres.find_one({'_id': movie['genre']})
+        movie['created_by'] = user['username']
+        movie['genre'] = genre['genre_name']
     return render_template("movies.html", movies=movies)
 
 
@@ -74,7 +79,7 @@ def login():
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
-            
+         
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(existing_user["password"], request.form.get("password")):
@@ -118,7 +123,7 @@ def add_movie():
     if request.method == "POST":
         # connect movie to user who posted it through user's ID
         user = mongo.db.users.find_one({'username': session["user"]})
-        # connect movie to genre through genre's ID
+        # connect movie to genre using genre's ID
         genre = mongo.db.genres.find_one(
             {'genre_name': request.form.get("genre_name")})
         movie = {
@@ -128,7 +133,7 @@ def add_movie():
             "genre": ObjectId(genre['_id']),
             "plot": request.form.get("plot"),
             "year": request.form.get("year_release"),
-            "created_by": ObjectId(user['_id'])
+            "created_by": ObjectId(user['_id']),
         }
         mongo.db.movies.insert_one(movie)
         flash("Thank you, movie successfully added!")
@@ -220,30 +225,56 @@ def rate_movie(movie_id, movie_title):
     movie_rating_avg = {}
 
     # https://stackoverflow.com/questions/10522347/mongodb-update-objects-in-a-documents-array-nested-updating
+    # If rating from same user already exists, update it
     if existing_rating:
         mongo.db.movies.update({"_id": ObjectId(movie_id),
             "ratings.user": user_id}, {"$set": {"ratings.$.rating": rating}})
         flash("Rating Updated")
     else:
+        # If user has not rated the movie yet
         mongo.db.movies.update({"_id": ObjectId(movie_id)}, {"$push": {
             "ratings": {"rating": rating, "user": user_id}}})
         flash("Rating Added")
 
     # https://stackoverflow.com/questions/34159487/mongodb-calculating-average-of-nested-array-of-objects-attributes
-    avg_ratings = mongo.db.movies.aggregate([{"$unwind": "$ratings"}, {"$group": {"_id": "$title", "average": {"$avg": "$ratings.rating"}}}])
+    avg_ratings = mongo.db.movies.aggregate(
+        [{"$unwind": "$ratings"}, {"$group": {"_id": "$title", "average": {"$avg": "$ratings.rating"}}}])
 
     for avg in avg_ratings:
         if str(avg["_id"]) != movie_title:
             continue
         else:
             movie_rating_avg = avg
-            print(movie_rating_avg)
-
 
     # https://stackoverflow.com/questions/15666169/python-pymongo-how-to-insert-a-new-field-on-an-existing-document-in-mongo-fro
-    mongo.db.movies.update({"_id": ObjectId(movie_id)}, {"$set": {"average": movie_rating_avg}})
+    mongo.db.movies.update(
+        {"_id": ObjectId(movie_id)}, {"$set": {"average": movie_rating_avg}})
 
     return redirect(url_for('get_movies'))
+
+
+@app.route("/add_comment/<movie_id>", methods=["POST", "GET"])
+def add_comment(movie_id):
+    comment = request.form.get("comment")
+    user = mongo.db.users.find_one({'username': session["user"]})["username"]
+
+    # add comment to comments array
+    mongo.db.movies.update({"_id": ObjectId(movie_id)}, {"$push": {
+        "comments": {"comment": comment, "user": user}}})
+     
+    flash("Thanks for you comment!")
+    return redirect(url_for('get_movies'))
+
+
+@app.route("/delete_comment/<movie_id>/<comment_id>/<user_id>")
+def delete_comment(movie_id, comment_id, user_id):
+    # Remove specific comment from coments array
+    # https://stackoverflow.com/questions/27471439/mongodb-using-pull-to-delete-dictionary-in-an-array-sub-document/27471525
+    mongo.db.movies.update({"_id": ObjectId(movie_id)}, {
+        '$pull': {"comments": {"comment": comment_id, "user": user_id }}})
+
+    flash("Comment deleted")
+    return redirect(url_for("get_movies"))
 
 
 if __name__ == "__main__":
