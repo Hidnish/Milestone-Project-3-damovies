@@ -5,6 +5,8 @@
 
     <div class="row card-panel light1">
 
+        <!-- movie search bar -->
+
         <form class="col s10 offset-s1 l6 offset-l3" action="{{ url_for('search') }}" method="post" class="col s12">
             <div class="row center-align">
                 <div class="input-field m-0 col s12 m6">
@@ -22,6 +24,8 @@
         </form>
     </div>
 
+    <!-- movie card -->
+
     {% if movies|length > 0 %}
     <div class="row limit padding-2 movie-margin">
         {% for movie in movies| sort(attribute='title') %}
@@ -34,6 +38,9 @@
                     <img class="responsive-img" alt="Deafult image of movie" src="#">
                     {% endif %}
                 </div>
+
+                <!-- movie info-card -->
+
                 <div class="card-content card-movie bg-grey-dark">
                     <span class="card-title activator white-text thin">
                         {{ movie.title }}
@@ -43,7 +50,6 @@
                     <a href="{{ url_for('edit_movie', movie_id=movie._id) }}" class="btn-small dark1">Edit</a>
                     <a href="{{ url_for('delete_movie', movie_id=movie._id) }}" class="btn-small light1 sure">Delete</a>
                     {% endif %}
-
                 </div>
                 <div class="card-reveal bg-seet-blur white-text thin">
                     <span class="card-title"><i class="fas fa-times right"></i>
@@ -57,13 +63,17 @@
                         <em>Posted by: <strong>{{ movie.created_by }}</strong></em>
                     </p><br>
                     <hr>
+
                     <!-- average rating -->
+
                     {% if movie.average %}
                     <p class="title-small center-align">
                         Average Rating by Users: <strong class="text-gold">{{ movie.average.average }}/5</strong>
                     </p>
                     {% endif %}
-                    <!-- rating section -->
+
+                    <!-- add rating section -->
+
                         <form class="center-align" method="POST"
                             action="{{ url_for('rate_movie', movie_id=movie._id, movie_title=movie.title) }}">
                             <label>
@@ -91,7 +101,9 @@
                             </button>
                         </form>
                     <br><br><br><br><br><br>
-                    <!-- comment section -->
+
+                    <!-- add comment section -->
+
                     <div class="row">
                         <form class="col s12 center-align" method="POST"
                             action="{{ url_for('add_comment', movie_id=movie._id) }}">
@@ -106,20 +118,24 @@
                             </button>
                         </form>
                     </div>
+
+                    <!-- see other comments section -->
+
                     {% for comment in movie.comments %}
                     <div class="row comment-box">
-                        <div class="col s8">
+                        <div class="col s12 m8">
                             <p><strong>{{ comment["comment"] }}</strong></p>
                             <p><em>by:</em> <strong>{{ comment["user"] }}</strong></p>
                         </div>
-                        <div class="col s4">
+                        <div class="col s12 m4">
                             {% if session.user|lower == movie.created_by|lower or session.user|lower == "admin"|lower %}
                             <a href="{{ url_for('delete_comment', movie_id=movie._id, comment_id=comment['comment'], user_id=comment['user']) }}"
-                                class="btn-small margin-top-2 light1 sure">Delete</a>
+                                class="btn-small margin-button light1 sure right">Delete</a>
                             {% endif %}
                         </div>
                     </div>
                     {% endfor %}
+
                 </div>
             </div>
         </div>
