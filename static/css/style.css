@@ -132,6 +132,10 @@ input {
     color: rgb(85, 22, 22);
 }
 
+.font-small{
+    font-size: 20px;
+}
+
 /* NAVBAR */
 
 .brand-logo {
