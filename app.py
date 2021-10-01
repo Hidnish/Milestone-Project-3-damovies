@@ -311,6 +311,17 @@ def delete_comment(movie_id, comment_id, user_id):
     return redirect(url_for("get_movies"))
 
 
+# error handlers
+@app.errorhandler(404)
+def error_400(e):
+    return render_template('error.html'), 404
+
+
+@app.errorhandler(500)
+def error_500(e):
+    return render_template('error.html'), 500
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
