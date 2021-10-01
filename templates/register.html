@@ -1,46 +1,63 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3 class="thin center-align text-gold">Register</h3>
+<h3 class="thin center-align text-gold">Register</h3>
 
-    <div class="row">
-        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
-            <div class="card-panel bg-grey-dark">
-                <!-- username -->
-                <div class="row">
-					<div class="input-field col s12">
-						<i class="fas fa-user-plus prefix white-text"></i>
-						<input id="username" name="username" type="text" minlength="5"
-                            maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-						<label for="username">Username</label>
-					</div>
-                </div>
-                <!-- passowrd -->
-                <div class="row">
-                    <div class="input-field col s12">
-						<i class="fas fa-lock prefix white-text"></i>
-                        <input id="password" name="password" type="password" minlength="5"
-                            maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                        <label for="password">Password</label>
-                    </div>
-                </div>
-                <!-- register -->
-                <div class="row">
-                    <button type="submit" class="col s12 btn-large black text-shadow">
-                        Register <i class="fas fa-sign-in-alt"></i>
-                    </button>
+<div class="row">
+    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
+        <div class="card-panel bg-grey-dark">
+            <!-- username -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-user-plus prefix white-text"></i>
+                    <input id="username" name="username" type="text" minlength="5" maxlength="15"
+                        pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                    <label for="username">Username</label>
                 </div>
             </div>
-        </form>
-    </div>
-
-    <div class="row movie-margin">
-        <div class="col s12">
-            <p class="center-align">
-                Already Registered?
-                <a href="{{ url_for('login') }}">Sign-In</a>
-            </p>
+            <!-- email -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-at prefix white-text"></i>
+                    <input id="userEmail" name="userEmail" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                    <label for="userEmail">Email address</label>
+                </div>
+            </div>
+            <!-- passowrd -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-lock prefix white-text"></i>
+                    <input id="password" name="password" type="password" minlength="5" maxlength="15"
+                        pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <!-- confirm password -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-lock prefix white-text"></i>
+                    <input id="passwordConfirm" name="passwordConfirm" type="password">
+                    <label id="PasswordConfirm" for="passwordConfirm" data-error="Password not match"
+                        data-success="Password Match">Password (Confirm)</label>
+                </div>
+            </div>
+            <!-- register -->
+            <div class="row">
+                <button type="submit" class="col s12 btn-large bg-black text-shadow">
+                    Register <i class="fas fa-sign-in-alt"></i>
+                </button>
+            </div>
         </div>
+    </form>
+</div>
+
+<div class="row movie-margin">
+    <div class="col s12">
+        <p class="center-align">
+            Already Registered?
+            <a href="{{ url_for('login') }}">Sign-In</a>
+        </p>
     </div>
+</div>
 
 {% endblock %}

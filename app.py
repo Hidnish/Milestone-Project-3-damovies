@@ -53,41 +53,51 @@ def search():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    password = request.form.get("password")
+    confirm_password = request.form.get("passwordConfirm")
+
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
         if existing_user:
-            flash("Username already exists")
+            flash("Username and/or email already exists")
             return redirect(url_for("register"))
 
-        register = {
-            "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
-        }
-        mongo.db.users.insert_one(register)
+        if password == confirm_password:
+            register = {
+                "username": request.form.get("username").lower(),
+                "email": request.form.get("userEmail"),
+                "password": generate_password_hash(request.form.get("password"))
+            }
+            mongo.db.users.insert_one(register)
 
-        session["user"] = request.form.get("username").lower()
-        flash("Registration Successful!")
-        return redirect(url_for("profile", username=session["user"]))
+            session["user"] = request.form.get("username").lower()
+            user_email = mongo.db.users.find_one({"username": session['user']})['email']
+            flash("Registration Successful!")
+            return redirect(url_for("profile", username=session["user"], user_email=user_email))
+        else:
+            flash("Passwords must match")
 
     return render_template("register.html")
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
-         
+     
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
+                user_email = mongo.db.users.find_one({"username": session['user']})['email']
                 flash("Welcome, {}".format(
                     request.form.get("username")))
                 return redirect(url_for(
-                    "profile", username=session["user"]))
+                    "profile", username=session["user"], user_email=user_email))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -102,10 +112,12 @@ def login():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
+
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
     if session["user"]:
-        return render_template("profile.html", username=username)
+        user_email = mongo.db.users.find_one({"username": session['user']})['email']
+        return render_template("profile.html", username=username, user_email=user_email)
 
     return redirect(url_for("login"))
 
@@ -149,6 +161,14 @@ def edit_movie(movie_id):
         user = mongo.db.users.find_one({'username': session["user"]})
         genre = mongo.db.genres.find_one(
             {'genre_name': request.form.get("genre_name")})
+        # Prevent ratings and comments from disappearing after movie is edited 
+        ratings = mongo.db.movies.find_one(
+            {"_id": ObjectId(movie_id)})['ratings']
+        average = mongo.db.movies.find_one(
+            {"_id": ObjectId(movie_id)})['average']
+        comments = mongo.db.movies.find_one(
+            {"_id": ObjectId(movie_id)})['comments']
+
         edmovie = {
             "title": request.form.get("title"),
             "cover_image": request.form.get("cover_image"),
@@ -156,7 +176,10 @@ def edit_movie(movie_id):
             "genre": ObjectId(genre['_id']),
             "plot": request.form.get("plot"),
             "year": request.form.get("year_release"),
-            "created_by": ObjectId(user['_id'])
+            "created_by": ObjectId(user['_id']),
+            "ratings": ratings,
+            "average": average,
+            "comments": comments
         }
         mongo.db.movies.update({"_id": ObjectId(movie_id)}, edmovie)
         flash("Thank you, movie successfully updated!")
@@ -222,7 +245,7 @@ def rate_movie(movie_id, movie_title):
     # variable containing average of ratings for specific movie
     movie_rating_avg = {}
 
-    # Check if user has already reated the movie 
+    # Check if user has already reated the movie
     existing_rating = mongo.db.movies.find_one(
         {"_id": ObjectId(movie_id), "ratings.user": user_id})
 
@@ -241,8 +264,8 @@ def rate_movie(movie_id, movie_title):
     # https://stackoverflow.com/questions/34159487/mongodb-calculating-average-of-nested-array-of-objects-attributes
     # Calculate average of ratings for each movie
     avg_ratings = mongo.db.movies.aggregate(
-        [{"$unwind": "$ratings"}, {
-            "$group": {"_id": "$title", "average": {"$avg": "$ratings.rating"}}}])
+        [{"$unwind": "$ratings"}, {"$group": {
+            "_id": "$title", "average": {"$avg": "$ratings.rating"}}}])
 
     # Loop through each rating average and assign it to correct movie
     for avg in avg_ratings:

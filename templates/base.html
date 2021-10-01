@@ -61,17 +61,17 @@
     <section>
         <!-- flash messages -->
         {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="row flashes">
-                        <h4 class="center-align flashes-full">{{ message }}</h4>
-                    </div>
-                {% endfor %}
-            {% else %}
-                <div class="row flashes">
-                    <h4 class="center-align flashes-empty">.</h4>
-                </div>
-            {% endif %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="row flashes">
+            <h4 class="center-align flashes-full">{{ message }}</h4>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="row flashes">
+            <h4 class="center-align flashes-empty">.</h4>
+        </div>
+        {% endif %}
         {% endwith %}
     </section>
 
@@ -80,11 +80,15 @@
 
 
     <footer class="page-footer light1 gold-line-top extra-margin-top2">
-        <div class="container container-footer text-gold">
-            © 2021 Hideo Nishimura
-            <a class="text-gold right" href="https://github.com/Hidnish" target=”_blank”><i
-                    class="fab fa-github"></i> GitHub: Hidnish 
-            </a>
+        <div class="row">
+            <div class="col s12 m6 container container-footer text-gold">
+                <a class="text-gold left margin-sides" href="{{ url_for('home') }}">DaMovies © 2021 Hideo Nishimura</a>
+            </div>
+            <div class="col s12 m6 container container-footer text-gold">
+                <a class="text-gold right margin-sides" href="https://github.com/Hidnish" target=”_blank”><i
+                        class="fab fa-github"></i> GitHub: Hidnish
+                </a>
+            </div>
         </div>
     </footer>
 

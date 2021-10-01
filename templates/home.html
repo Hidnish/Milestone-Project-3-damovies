@@ -17,27 +17,29 @@
 
 <body>
 
+    <!-- navbar -->
     <nav class="nav-extend nav-fixed bg-seet golden-bottom">
         <div class="nav-wrapper">
             <a href="{{ url_for('home') }}" class="brand-logo text-gold logo-flex">Da Movies</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
             <ul class="padding-right right hide-on-med-and-down">
-                    <li><a href="{{ url_for('home') }}">Home</a></li>
-                    <li><a href="{{ url_for('get_movies') }}">Catalogue</a></li>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('get_movies') }}">Catalogue</a></li>
                 {% if session.user %}
-                    <li><a href="{{ url_for('add_movie') }}">Add Movies</a></li>
-                    {% if session.user|lower == "admin"|lower %}
-                        <li><a href="{{ url_for('get_genres') }}">Manage Genres</a></li>
-                    {% endif %}
-                    <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                    <li><a class="sure logout" href="{{ url_for('logout') }}">Sign-Out</a></li>
+                <li><a href="{{ url_for('add_movie') }}">Add Movies</a></li>
+                {% if session.user|lower == "admin"|lower %}
+                <li><a href="{{ url_for('get_genres') }}">Manage Genres</a></li>
+                {% endif %}
+                <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+                <li><a class="sure logout" href="{{ url_for('logout') }}">Sign-Out</a></li>
                 {% else %}
-                    <li><a href="{{ url_for('login') }}">Sign-In</a></li>
+                <li><a href="{{ url_for('login') }}">Sign-In</a></li>
                 {% endif %}
             </ul>
         </div>
     </nav>
 
+    <!-- mobile side navbar -->
     <ul class="sidenav light1" id="mobile-demo">
         <li>
             <h4 class="center-align brand-logo">Da Movies</h4>
@@ -45,14 +47,14 @@
         <li><a href="{{ url_for('home') }}">Home</a></li>
         <li><a href="{{ url_for('get_movies') }}">Catalogue</a></li>
         {% if session.user %}
-            <li><a href="{{ url_for('add_movie') }}">Add Movies</a></li>
-            {% if session.user|lower == "admin"|lower %}
-                <li><a href="{{ url_for('get_genres') }}">Manage Genres</a></li>
-            {% endif %}
-            <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-            <li><a href="{{ url_for('logout') }}">Sign-Out</a></li>
+        <li><a href="{{ url_for('add_movie') }}">Add Movies</a></li>
+        {% if session.user|lower == "admin"|lower %}
+        <li><a href="{{ url_for('get_genres') }}">Manage Genres</a></li>
+        {% endif %}
+        <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+        <li><a href="{{ url_for('logout') }}">Sign-Out</a></li>
         {% else %}
-            <li><a href="{{ url_for('login') }}">Sign-In</a></li>
+        <li><a href="{{ url_for('login') }}">Sign-In</a></li>
         {% endif %}
     </ul>
 
@@ -73,11 +75,16 @@
     </section>
 
     <footer class="page-footer light1 gold-line-top extra-margin-top2">
-        <div class="container container-footer text-gold">
-            © 2021 Hideo Nishimura
-            <a class="text-gold right" href="https://github.com/Hidnish" target=”_blank”><i
-                    class="fab fa-github"></i> GitHub: Hidnish </a>
-
+        <div class="row">
+            <div class="col s12 m6 container container-footer text-gold">
+                <a class="text-gold left margin-sides" href="{{ url_for('home') }}">DaMovies © 2021 Hideo Nishimura</a>
+            </div>
+            <div class="col s12 m6 container container-footer text-gold">
+                <a class="text-gold right margin-sides" href="https://github.com/Hidnish" target=”_blank”><i
+                        class="fab fa-github"></i> GitHub: Hidnish
+                </a>
+            </div>
+        </div>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
