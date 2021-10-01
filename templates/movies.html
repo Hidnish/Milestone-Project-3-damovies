@@ -32,10 +32,10 @@
         <div class="col s12 m6 l4 cards">
             <div class="card">
                 <div class="card-image">
-                    {% if movie.cover_image %}
+                        {% if movie.cover_image %}
                     <img src="{{ movie.cover_image }}" alt="movie image" class="responsive-img">
                     {% else %}
-                    <img class="responsive-img" alt="Deafult image of movie" src="#">
+                        <img class="responsive-img" alt="Deafult image of movie" src="#">
                     {% endif %}
                 </div>
 
@@ -68,7 +68,7 @@
 
                     {% if movie.average %}
                     <p class="title-small center-align">
-                        Average Rating by Users: <strong class="text-gold">{{ movie.average.average }}/5</strong>
+                        Average Rating by Users: <strong class="text-gold">{{ movie.average.average|round(1, 'floor') }}/5</strong>
                     </p>
                     {% endif %}
 

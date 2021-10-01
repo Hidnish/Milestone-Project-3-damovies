@@ -24,6 +24,11 @@ def home():
     return render_template("home.html")
 
 
+@app.route("/error")
+def error():
+    return render_template("404.html")
+
+
 @app.route("/get_movies")
 def get_movies():
     movies = list(mongo.db.movies.find())
