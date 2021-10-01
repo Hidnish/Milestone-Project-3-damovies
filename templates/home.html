@@ -69,7 +69,7 @@
                 <h3 class="brand-logo">DaMovies</h3><br><br><br>
                 <p class="font-small thin extra-margin-side">We are a community of cinephiles like you who enjoy discussing and sharing their thoughts on their favorite movies, as well as finding new things to watch.<br><br>Visit our <a href="{{ url_for('get_movies') }}">catalogue</a> or 
                     {% if session.user %}
-                    <a href="{{ url_for('login') }}">add a movie</a> 
+                    <a href="{{ url_for('add_movie') }}">add a movie</a> 
                     {% else %}
                     <a href="{{ url_for('login') }}">sign-In</a> 
                     {% endif %}

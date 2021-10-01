@@ -151,6 +151,9 @@ def add_movie():
             "plot": request.form.get("plot"),
             "year": request.form.get("year_release"),
             "created_by": ObjectId(user['_id']),
+            "ratings": [],
+            "average": [],
+            "comments": []
         }
         mongo.db.movies.insert_one(movie)
         flash("Thank you, movie successfully added!")
@@ -237,8 +240,14 @@ def edit_genre(genre_id):
 
 @app.route("/delete_genre/<genre_id>")
 def delete_genre(genre_id):
-    mongo.db.genres.remove({"_id": ObjectId(genre_id)})
-    flash("Genre sucessfully deleted!")
+    movie_genre = mongo.db.movies.find_one({"genre": ObjectId(genre_id)})
+
+    if movie_genre:
+        flash("Remove all movies related to a genre before deleting it")
+    else:
+        mongo.db.genres.remove({"_id": ObjectId(genre_id)})
+        flash("Genre sucessfully deleted!")
+
     return redirect(url_for("get_genres"))
 
 
