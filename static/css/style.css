@@ -37,6 +37,10 @@ body {
     margin-right: 7px;
 }
 
+.margin-sides {
+    margin: 0 15px 10px;
+}
+
 .m-0 {
     margin: 0;
 }
@@ -72,6 +76,10 @@ body {
 }
 
 /* background and text */ 
+
+.bg-black {
+    background-color: rgb(7, 7, 7);
+}
 
 .bg-grey-dark {
     background-color: rgb(19, 19, 19);
@@ -149,6 +157,11 @@ input {
 
 .sidenav li a {
     color: rgba(199, 188, 101, 0.8) !important;
+}
+
+.profile-name {
+    margin: 0 5px;
+    padding: 0 10px;
 }
 
 /* flash messages */ 
@@ -322,6 +335,14 @@ nav ul a:hover {
 
    .lil{
        font-size: 20px;
+   }
+
+   .btn{
+       width: 130px!important;
+   }
+
+   footer .right{
+       float: left!important;
    }
 }
 
