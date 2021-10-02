@@ -73,7 +73,7 @@
                     {% endif %}
 
                     <!-- add rating section -->
-
+                    {% if session.user %}
                         <form class="center-align" method="POST"
                             action="{{ url_for('rate_movie', movie_id=movie._id, movie_title=movie.title) }}">
                             <label>
@@ -100,24 +100,26 @@
                                 Submit rating
                             </button>
                         </form>
+                    {% endif %}
                     <br><br><br><br><br><br>
 
                     <!-- add comment section -->
-
-                    <div class="row">
-                        <form class="col s12 center-align" method="POST"
-                            action="{{ url_for('add_comment', movie_id=movie._id) }}">
-                            <div class="col s12 input-field m-0">
-                                <i class="fas fa-pen prefix"></i>
-                                <textarea id="comment" name="comment" 
-                                    class="materialize-textarea white-text validate" required></textarea>
-                                <label for="comment">Leave a comment</label>
-                            </div>
-                            <button type="submit" class="btn-small bg-grey-dark text-shadow">
-                                Submit Comment
-                            </button>
-                        </form>
-                    </div>
+                    {% if session.user %}
+                        <div class="row">
+                            <form class="col s12 center-align" method="POST"
+                                action="{{ url_for('add_comment', movie_id=movie._id) }}">
+                                <div class="col s12 input-field m-0">
+                                    <i class="fas fa-pen prefix"></i>
+                                    <textarea id="comment" name="comment" 
+                                        class="materialize-textarea white-text validate" required></textarea>
+                                    <label for="comment">Leave a comment</label>
+                                </div>
+                                <button type="submit" class="btn-small bg-grey-dark text-shadow">
+                                    Submit Comment
+                                </button>
+                            </form>
+                        </div>
+                    {% endif %}
 
                     <!-- see other comments section -->
 
