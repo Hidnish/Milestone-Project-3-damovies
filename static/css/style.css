@@ -45,6 +45,10 @@ body {
     margin: 0;
 }
 
+.hidden {
+    display: none;
+}
+
 /* buttons */
 
 .dark1 {
@@ -199,31 +203,29 @@ input {
 .hero-container {    
     height: 80vh;
 
-    background: -webkit-gradient(linear, left bottom, left top, from(black), to(transparent)), url('https://mail.rbm.org.au/wp-content/uploads/2020/01/tumblr_static_old-skool-3d-cinema-audience_color.jpg') center no-repeat;
-    background: -o-linear-gradient(linear, left bottom, left top, from(black), to(transparent)), 
-    url('https://mail.rbm.org.au/wp-content/uploads/2020/01/tumblr_static_old-skool-3d-cinema-audience_color.jpg') 
-    center no-repeat;
-    background: linear-gradient(linear, left bottom, left top, from(black), to(transparent)), url('https://mail.rbm.org.au/wp-content/uploads/2020/01/tumblr_static_old-skool-3d-cinema-audience_color.jpg')
-     center no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+    background-color: black;
+    background: -webkit-gradient(linear, left bottom, left top, from(black), to(transparent)), 
+        url('../imgs/DaMovies_PIC1.jpeg');
+    background: -o-linear-gradient(left bottom, left top, from(black), to(transparent)), 
+        url('../imgs/DaMovies_PIC1.jpeg');
+    background: linear-gradient(to top, black, transparent), 
+        url('../imgs/DaMovies_PIC1.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
 }
 
 .hero-container-2 {    
     height: 80vh;
 
-    background: -webkit-gradient(linear, left bottom, left top, from(transparent), to(black)), url('https://madisonmovie.files.wordpress.com/2014/08/adametokillfor.jpg') center no-repeat;
-    background: -o-linear-gradient(linear, left bottom, left top, from(transparent), to(black)), 
-    url('https://madisonmovie.files.wordpress.com/2014/08/adametokillfor.jpg') 
-    center no-repeat;
-    background: linear-gradient(linear, left bottom, left top, from(transparent), to(black)), url('https://madisonmovie.files.wordpress.com/2014/08/adametokillfor.jpg')
-     center no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background-color: black;
+    background: -webkit-gradient(linear, left bottom, left top, from(transparent), to(black)), url('../imgs/DaMovies_PIC2.jpeg');
+    background: -o-linear-gradient(left bottom, left top, from(transparent), to(black)), 
+    url('../imgs/DaMovies_PIC2.jpeg');
+    background: linear-gradient(to top, transparent, black), url('../imgs/DaMovies_PIC2.jpeg');
+     background-repeat: no-repeat;
+     background-position: center;
+     background-size: cover;
 }
 
 .container-fluid {

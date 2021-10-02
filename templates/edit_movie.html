@@ -1,8 +1,7 @@
 {% extends "base.html" %}
-
 {% block content %}
 
-<h3 class="center-align thin text-gold">Edit Movie</h2>
+<h3 class="center-align thin text-gold">Edit Movie</h3>
 
     <div class="row">
         <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('edit_movie', movie_id=movie._id) }}">
@@ -15,9 +14,9 @@
                             <option value="" disabled>Choose Genre</option>
                             {% for genre in genres %}
                                 {% if genre._id == movie.genre %}
-                                <option value="{{ genre.genre_name }}" selected>{{ genre.genre_name }}</option>
+                                    <option value="{{ genre.genre_name }}" selected>{{ genre.genre_name }}</option>
                                 {% else %}
-                                <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
+                                    <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
                                 {% endif %}
                             {% endfor %}
                         </select>
@@ -55,7 +54,7 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="fas fa-align-left prefix"></i>
-                        <textarea id="plot" name="plot" min-lenght="5" max-lenght="200"
+                        <textarea id="plot" name="plot"
                             class="materialize-textarea white-text validate" required>
                             {{- movie.plot -}}
                         </textarea>

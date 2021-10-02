@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="center-align thin text-gold extra-margin">Movie Catalogue</h2>
+<h3 class="center-align thin text-gold extra-margin">Movie Catalogue</h3>
 
     <div class="row card-panel light1">
 
         <!-- movie search bar -->
 
-        <form class="col s10 offset-s1 l6 offset-l3" action="{{ url_for('search') }}" method="post" class="col s12">
+        <form class="col s10 offset-s1 l6 offset-l3" action="{{ url_for('search') }}" method="post">
             <div class="row center-align">
                 <div class="input-field m-0 col s12 m6">
                     <i class="fas fa-search prefix text-gold"></i>
@@ -33,10 +33,10 @@
             <div class="card">
                 <div class="card-image">
                         {% if movie.cover_image %}
-                    <img src="{{ movie.cover_image }}" alt="movie image" class="responsive-img">
-                    {% else %}
-                        <img class="responsive-img" alt="Deafult image of movie" src="#">
-                    {% endif %}
+                            <img src="{{ movie.cover_image }}" alt="movie image" class="responsive-img">
+                        {% else %}
+                            <img class="responsive-img" alt="Deafult image of movie" src="#">
+                        {% endif %}
                 </div>
 
                 <!-- movie info-card -->
@@ -109,7 +109,7 @@
                             action="{{ url_for('add_comment', movie_id=movie._id) }}">
                             <div class="col s12 input-field m-0">
                                 <i class="fas fa-pen prefix"></i>
-                                <textarea id="comment" name="comment" min-lenght="5" max-lenght="200"
+                                <textarea id="comment" name="comment" 
                                     class="materialize-textarea white-text validate" required></textarea>
                                 <label for="comment">Leave a comment</label>
                             </div>

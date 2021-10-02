@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h3 class="center-align thin text-gold">Add Movies</h2>
+<h3 class="center-align thin text-gold">Add Movies</h3>
 
     <div class="row movie-margin">
         <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('add_movie') }}">
@@ -51,7 +51,7 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="fas fa-align-left prefix"></i>
-                        <textarea id="plot" name="plot" min-lenght="5" max-lenght="200"
+                        <textarea id="plot" name="plot"
                             class="materialize-textarea white-text validate" required></textarea>
                         <label for="plot">Plot</label>
                     </div>
