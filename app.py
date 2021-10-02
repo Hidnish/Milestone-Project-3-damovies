@@ -24,17 +24,11 @@ def home():
     return render_template("home.html")
 
 
-@app.route("/error")
-def error():
-    return render_template("404.html")
-
-
 @app.route("/get_movies")
 def get_movies():
     movies = list(mongo.db.movies.find())
 
     for movie in movies:
-        # convert user and genre's ID to username and genre_name for display
         user = mongo.db.users.find_one({'_id': movie['created_by']})
         genre = mongo.db.genres.find_one({'_id': movie['genre']})
         movie['created_by'] = user['username']
@@ -53,6 +47,7 @@ def search():
         genre = mongo.db.genres.find_one({'_id': movie['genre']})
         movie['created_by'] = user['username']
         movie['genre'] = genre['genre_name']
+
     return render_template("movies.html", movies=movies)
 
 
@@ -166,9 +161,13 @@ def add_movie():
 @app.route("/edit_movie/<movie_id>", methods=["GET", "POST"])
 def edit_movie(movie_id):
     if request.method == "POST":
-        user = mongo.db.users.find_one({'username': session["user"]})
+
         genre = mongo.db.genres.find_one(
             {'genre_name': request.form.get("genre_name")})
+        # Prevent name of user who posted the movie from changing once admin edits it
+        movie = mongo.db.movies.find_one(
+            {'_id': ObjectId(movie_id)})["created_by"]
+        user = mongo.db.users.find_one({'_id': movie})
         # Prevent ratings and comments from disappearing after movie is edited 
         ratings = mongo.db.movies.find_one(
             {"_id": ObjectId(movie_id)})['ratings']
@@ -201,7 +200,7 @@ def edit_movie(movie_id):
 @app.route("/delete_movie/<movie_id>")
 def delete_movie(movie_id):
     mongo.db.movies.remove({"_id": ObjectId(movie_id)})
-    flash("Movie sucessfully deleted!")
+    flash("Movie sucessfully deleted")
     return redirect(url_for("get_movies"))
 
 
@@ -232,7 +231,7 @@ def edit_genre(genre_id):
         }
         mongo.db.genres.update({"_id": ObjectId(genre_id)}, genre_upd)
         flash("Genre Updated")
-        return redirect(url_for("get_genres")),
+        return redirect(url_for("get_genres"))
 
     genre = mongo.db.genres.find_one({"_id": ObjectId(genre_id)})
     return render_template("edit_genre.html", genre=genre)
