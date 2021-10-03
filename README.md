@@ -49,38 +49,41 @@ The service is aimed at an english-speaking audience that wants to watch new mov
 
 #### User Stories 
 
-- "I want to navigate the website easily and intuitively, on any device (phone, tablet or laptop)"
-- "I am interested in finding new movies to watch"
-- "I am interested in seeing other users' reviews about the movies from the catalogue
-- "I am interested in rating and commenting movies I have already watched"
-- "I am interested in contributing by adding new movies to the catalogue"  
+- As a first time visitor
+    - I want to easily understand the main purpose of the site
+    - I want the site navigation to be intutive and user friendly
+    - I want to easily access the movies' catalogue
+    - I want to create an account to become part of the website community 
+    - I want to see information about movies in the catalogue (i.e. director, year of release)
+    - I want to see the audience rating of movies in the catalogue
+    - I want to add my rating
+    - I want to see other users comments on movies in the catalogue
+    - I want to add my own comment
+    - I want to add movies that I like to the catalogue 
+    - I want to be able to edit information of the movies I have uploaded in the catalogue
+    - I want to be able to delete movies I have uploaded
+
+- As a returning and/or frequent visitor
+    - I want to easily log-in in to the website
+    - When I have questions about the website, I want to find information about the website owner/administrator  
 
 #### Strategy 
 
 ##### Project Goals:
-- To Provide information/promote on a holiday destinations.
-- Grab people's attention through images and tips on recommended locations.
-- Eventually, to increase the number of tourists visiting Kyoto and the specific locations listed in the website.
+- To provide users with a web application where to share and discuss movies (via CRUD operations):
+    - Create: By adding movies to the catalogue
+    - Read: By searching and filtering movies in the catalogue
+    - Update: By editing, commenting and rating existing movies in the catalogue
+    - Delete: By deleting movies uploaded in the catalogue
+- To increase traffic and expand the website community
+- Developing a partnership with streaming services as a future goal 
 
 ##### Customer Goals:
-- To find a nice destination for the next holiday.
-- To find information confirming the worthiness of such destination (also for those who were already interested in visiting Kyoto).
-- To be able to contact someone for clarifications or in a case of doubts 
+- To find new movies to watch
+- To see other users' reviews about the movies from the catalogue
+- To rate and comment movies I have already watched
+- To contribute to the website community by adding new movies to the catalogue
 - To navigate the website smoothly and intuitively.
-
-#### Scope 
-
-- Provides a clean UX for users with intuitive navigation.
-- Structures the content with clear division and focus on introduction, maps and contact form. 
-- Animations (made with JavaScript) included to improve the overall user experience and increase the trustworthiness of the website. 
-
-#### Structure 
-
-- The structure has been developed to allow users to quickly absorb information and imagery.
-- Content throughout the website has been provided in small bites, to allow the user to easily understand how the website works and avoid information overload.
-- The About section introduces the user to the different activities available in the city.
-- The Location section allows the user to chose between day & night activities and find all the locations on a map with essential information and pictures. 
-- A Contact form (via email) is provided at the bottom of the page together with links to Social Media in the Footer.
 
 #### Skeleton
 
@@ -89,45 +92,56 @@ The service is aimed at an english-speaking audience that wants to watch new mov
 - Home, About, Locations (map) and Contact sections.
 - Footer with social media links and copyright message.
 
-#### Surface 
+#### Design  
 
 ##### Colors 
 
-Colours throughout the page fall in the spectrum between #fafafa (off white) & #1c334d (dark blue) to fit with the 'Day and Night' theme of the website. 
+The color scheme for the website consist of three main colors: black, gold and white. Black is used as based color for the website, gold for texts, buttons and decorations, and white for texts and icons. Grey shades are also used to differentiate certain elements from the black background (i.e. navbar, forms and buttons). 
 
-![image](https://www.colorhexa.com/fafafa.png) ![Image](https://www.colorhexa.com/1c334d.png) 
+Combining black and gold seemed like the right choice to create a classy cinematic feel for the website. Using white creates contrast with the black background and keeps text as readable as possible.
+
+
+- ![#c7bc65](https://via.placeholder.com/15/c7bc65/000000?text=+) `#c7bc65`
+- ![#fffff](https://via.placeholder.com/15/ffffff/000000?text=+) `#ffffff`
+- ![#00000](https://via.placeholder.com/15/00000/000000?text=+) `#000000`
+- ![#131313](https://via.placeholder.com/15/131313/000000?text=+) `#131313`
+- ![#1a1a1a](https://via.placeholder.com/15/1a1a1a/000000?text=+) `#1a1a1a`
 
 ##### Typography
 
-- "Japanese Brush" font for: Logo and sections heading.
-- "Crimson Text" font for small headings and nav-links, to add an elegant touch.
-- "Helvetica Neue" font for body content (Default Bootstrap font-family), to keep the website's content clean and easily readable.
+- "Monoton" for: Logo, with the intention of giving it a cinematic feel.
+- "Roboto" for: for the rest of the text. This is the default font when using the Materialize library. The choice of using it was due to the fact that is simple, clean and gives the website a professional look.
 - "Sans-serif" as fall-back font for every text.
 
 
 ##### images
 
-- Images were carefully selected to match with the background colours and create a sense of 'authenticity' in the website.
+- On the home page, images were chosen to give the user the feeling of being at the movies as well as add a retro look to the website. 
 
 --- 
 
 ## Features 
 
-- Designed with HTML5, CSS3, JavaScript + libraries (Bootstrap, jQuery, GSAP).
-- Responsive **navigation bar** (fixed on mobile and Safari browser) present throughout the page to move from one section to the other with ease. 
-- **Home/landing section** with auto-playing slideshow.
+- Designed with HTML5, CSS3, JavaScript + libraries (Materialize, jQuery).
 
     <img src="assets/images/readme-img/homepage.png" alt="homepage" width="70%"/>
 
-- **About section** with:
-    - Information about the website and the different activities/locations available.
-    - Links to the specific locations from the 'Location section'.
+- **General features (apply to all pages except 404)**:
+    - Fixed navbar on top of the page
+    - Footer with link to home page and Github account
+    - Responsive site on all devices
+    - Collapsible navbar, with 'hamburger button', under 992px breakpoint 
+
+- **Home page**:
+    - Information about the website and its purpose.
+    - Links to 'catalogue' and 'log-in/register' pages for users who have not signed-in yet.
+    - Links to 'catalogue' and 'add movie' pages for users who have already signed-in. 
     <br><br>
     
     <img src="assets/images/readme-img/about.png" alt="about section" width="70%"/>
 
-- **Location section** with:
-    - First menu to select day-time or night-time locations (based on the choice the section background and map colour will change).
+- **Catalogue** with:
+    - Search bar to look for specific movies (filtered by title or director's name).
     - Second menu to select one of the two groups of locations available based on the first selection (i.e. Restaurants and Bars & Clubs).
     - Third menu to select a specific location (that will show on the map).
     - Map with markers and popup information for each location.
