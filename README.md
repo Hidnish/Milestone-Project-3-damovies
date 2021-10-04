@@ -127,7 +127,11 @@ Combining black and gold seemed like the right choice to create a classy cinemat
     <img src="assets/images/readme-img/homepage.png" alt="homepage" width="70%"/>
 
 - **General features (apply to all pages except 404)**:
-    - Fixed navbar on top of the page
+    - Fixed navbar on top of the page with links to:
+        - Home, catalogue (for all users)
+        - Sign-in/register (for not signed-in users)
+        - Add movies, Profile, sign-out (for signed-in users)
+        - Manage generes (for website administrator only)
     - Footer with link to home page and Github account
     - Responsive site on all devices
     - Collapsible navbar, with 'hamburger button', under 992px breakpoint 
@@ -140,32 +144,88 @@ Combining black and gold seemed like the right choice to create a classy cinemat
     
     <img src="assets/images/readme-img/about.png" alt="about section" width="70%"/>
 
-- **Catalogue** with:
+- **'Catalogue' page**:
     - Search bar to look for specific movies (filtered by title or director's name).
-    - Second menu to select one of the two groups of locations available based on the first selection (i.e. Restaurants and Bars & Clubs).
-    - Third menu to select a specific location (that will show on the map).
-    - Map with markers and popup information for each location.
+    - List of movies with movie cover image, movie title and icon to reveal specific movie information (for all users)
+        - Edit and Delete buttons (visible for users who posted the movie and administrator)
+    - Movie info-card (by clicking on movie reveal icon), with:         
+        - Specific information about the movie (i.e. director, plot, etc.)
+        - Average rating by users on a scale from 1 to 5
+        - Form with radio buttons to add rating (only for sign-in users)
+        - List of users' comments
+        - Text area to add comment (only for sign-in users)
+    - Flash messages sections (Informs the user whether his/her actions were successfully completed, i.e. upload a movie, edit a movie, add a comment, etc.)
     <br><br>
 
     <img src="assets/images/readme-img/locationsd.png" alt="location section 1" width="70%"/>
-    <img src="assets/images/readme-img/locationsn.png" alt="location section 2" width="70%"/>
 
-- **Contact section** with contact form
+- **'Add Movies' page (only for signed-in users)**:
+    - Form where the user can provide information about the movie they want to upload:
+        - Genre
+        - Title
+        - Director
+        - Year
+        - Plot 
+        - Movie cover image (optional)
+    - Submit button (which also redirects the user to the movie catalogue)
+    - Flash messages sections (Informs the user whether his/her actions were successfully completed, i.e. upload a movie, edit a movie, add a comment, etc.)
+
+- **'Manage Genres' page (only for administrator)**:
+    - 'Add genre' button (which redirects to the 'Add genres' page)
+    - List of movie genres, each featured with:
+        - Edit button (which redirects to the 'Edit genre' page)
+        - Delete button
+    - Flash messages sections (Informs the user if there is any issue, i.e. user cannot delete specific unless all movies of that genre in the catalogue are also deleted)
+
+- **'Profile' page (only for signed-in users)**:
+    - Section with:
+        - User's username and email
+        - List of movies uploaded by the user
+        - Flash messages sections (To welcome the user once he/she has signed-in)
+
+- **'Sign-in' page (only for NOT signed-in users)**:
+    - Form that requires the user to insert correct username and password
+    - Submit button (which also redirects the user to the profile page)
+    - Link to 'Register' page
+    - Flash messages sections (Informs the user if there is any issue, i.e. wrong password)
 
     <img src="assets/images/readme-img/contact.png" alt="contact section" width="70%"/>
 
-- **Footer** with links to social media and copyright message.
-
     <img src="assets/images/readme-img/footer.png" alt="footer" width="70%"/>
 
-- **404 page** with link to the homepage  
+### Pages not accessible via navbar 
+
+- **'Register' page (only for NOT signed-in users)**: Accessible via link from 'Sign-in' page 
+    - Form that requires the user to insert:
+        - Username
+        - Email
+        - Password
+        - Password confirmation
+    - Submit button (which also redirects the user to the profile page)
+    - Flash messages sections (Informs the user if there is any issue, i.e. username already exists, passwords do not march)
+
+- **'Edit Movie' page (only for signed-in users)**: accessible by clickin on movie 'edit' button - see above in 'Catalogue' page
+    - Form identical to the 'Add movie' page's one. However it is already filled in with the old movie infos.
+    - Submit button (which also redirects the user to the movie catalogue)
+
+- **'Add genre' page (only for webiste administrator)**: Accessible by clicking on genre 'Add Genre' button - see above in: 'Manage Genres' page
+    - Form with selected genre name to be edited
+    - Submit button (which also redirects the user to the 'Manage Genres' page)
+
+- **'Edit genre' page (only for webiste administrator)**: Accessible by clicking on genre 'edit' button - see above in: 'Manage Genres' page
+    - Form with selected genre name to be edited
+    - Submit button (which also redirects the user to the 'Manage Genres' page)
+
+
+- **'Error' page**:
+    - Link to home page
 
     <img src="assets/images/readme-img/404.png" alt="404 page" width="70%"/>
 
 #### Future prospects
 
-- A section to book a trip directly from the website.
-- A review section with comment from previous customers/users.
+- Section where users can watch movie trailers 
+- Section to show what streaming services provide the movies from the catalogue
 
 ---
 
@@ -173,45 +233,53 @@ Combining black and gold seemed like the right choice to create a classy cinemat
 
 #### Languages 
 
-1. [HTML5](https://en.wikipedia.org/wiki/HTML5)
-2. [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
+
+1. [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
+2. [HTML5](https://en.wikipedia.org/wiki/HTML5)
 3. [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
+4. [Python](https://www.python.org)
 
 #### Integration
 
-1. [Bootstrap](https://getbootstrap.com/)
-   - Used to assist with styling and responsiveness of the website
-2. [FontAwesome](https://fontawesome.com/)
-   - Used to create social media icons in the footer 
-3. [Google Fonts](https://fonts.google.com/) 
-   - Used to import 'Crimson Text' font
-4. [Online Web Fonts](https://www.onlinewebfonts.com/download/fc87c87c07938e0484418e4c0a773b02)
-   - Used to import 'Japanese Brush Master' font
-5. [GSAP](https://greensock.com/gsap/)
-   - Used to add animation to the About section
+1. [BSON](https://bsonspec.org)
+    - bson.objectid: required dependency for MongoDB management system.
+2. [Flask](https://flask.palletsprojects.com/)
+    - Framework used to create and populate the templates.
+3. [FontAwesome](https://fontawesome.com/)
+    - Used as source of icons for the website.
+4. [Google Fonts](https://fonts.google.com/) 
+    - Used to import 'Monoton' font.
+5. [Jinja](https://jinja.palletsprojects.com/)
+    - Templating language used to simplify and display backend data in html format.
 6. [jQuery](https://jquery.com/)
-   - Included with Bootstrap to create responsive navbar and used to simplify scripts.
-7. [Email.js](https://www.emailjs.com)
-   - API for sending emails through contact form   
-8. [LeafletJS](https://leafletjs.com/)
-   - API for interactive maps 
+    - Included with Materialize and used to simplify scripts.
+7. [Materialize](https://materializecss.com/)
+    - Used to assist with styling and responsiveness of the website.
+8. [Pymongo](https://pypi.org/project/pymongo/)
+    - flask_pymongo: used to allow MongoDB database - Python interaction.
+9. [Werkzeug](https://werkzeug.palletsprojects.com/)
+    - Used for password hashing and authentication.
 
-#### Workspace Version control and Repository storage
 
-1. [Gitpod](https://www.gitpod.io/) - Used as workspace IDE (Integrated Development Environment).
-2. [GitHub](https://github.com/) - Hosting platform for version control, used to manage my repositories.
-3. [Git](https://git-scm.com/) - Version control software to record file changes and updates.
+#### Workspace Version control, Repository storage and Deployment
+
+1. [Gitpod](https://www.gitpod.io/) 
+    - Used as workspace IDE (Integrated Development Environment).
+2. [GitHub](https://github.com/) 
+    - Hosting platform for version control, used to manage my repositories.
+3. [Git](https://git-scm.com/) 
+    - Version control software to record file changes and updates.
+4. [Heroku](https://dashboard.heroku.com/)
+    - Cloud platform used to deploy application.
+
 
 ---
 
-## Resources
+## Resources !!!!!!!!!!!!!!!
 
 #### Sources of knowledge
 - SLACK Community - Source of assistance and inspiration. 
-- [Stack Overflow](https://stackoverflow.com/) - General resource.
-- [Youtube](https://www.youtube.com/) - General resource.
-- [CSS-Tricks](https://css-tricks.com/) - General resource.
-- [W3.CSS](https://www.w3schools.com/w3css/4/w3.css) - General resource.
+- [Stack Overflow](https://stackoverflow.com/) - General resource. 
 
 #### Other resources 
 - [Balsamiq](https://balsamiq.com/wireframes/) - For designing wireframes.
@@ -225,7 +293,7 @@ Combining black and gold seemed like the right choice to create a classy cinemat
 
 ### Testing
 
-Testing documentation, including User Stories, can be found here: [Testing](assets/docs/Testing.md) 
+Testing documentation, including User Stories, can be found here: [Testing](static/docs/TESTING.md) 
 
 #### Solved bugs
 
