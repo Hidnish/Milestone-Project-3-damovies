@@ -8,7 +8,13 @@ $(document).ready(function () {
         return confirm("Are you sure you want to delete this item?");
       }
   })
-
+  if($(window).width() < 590) {
+    $('.btn-genre').removeClass('btn');
+    $('.btn-genre').addClass('btn-small');
+    } else {
+    $('.btn-genre').removeClass('btn-small');
+    $('.btn-genre').addClass('btn');
+    }
 
   validateMaterializeSelect();
   function validateMaterializeSelect() {
@@ -37,4 +43,4 @@ $(document).ready(function () {
           }
       });
   };
-}); 
+})
