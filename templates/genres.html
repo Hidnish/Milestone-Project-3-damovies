@@ -14,13 +14,15 @@
 
         <div class="row">
             {% for genre in genres| sort(attribute='genre_name') %}
-                <div class="col m4 s12">
+                <div class="col s12 m6 l4 ">
                     <div class="card bg-grey center-align">
                         <div class="card-content white-text">
-                            <span class="card-title">{{ genre.genre_name }} 
-                            <a href="{{ url_for('edit_genre', genre_id=genre._id) }}" class="btn dark1 right">Edit</a>
-                            <a href="{{ url_for('delete_genre', genre_id=genre._id) }}" 
-                                class="btn light1 right sure">Delete</a></span>
+                            <span class="card-title card-genre">
+                                {{ genre.genre_name }}
+                                <a href="{{ url_for('edit_genre', genre_id=genre._id) }}" class="btn-genre btn dark1 right">Edit</a>
+                                <a href="{{ url_for('delete_genre', genre_id=genre._id) }}" 
+                                    class="btn-genre btn light1 right sure">Delete</a>
+                            </span>
                         </div>
                     </div>
                 </div>
