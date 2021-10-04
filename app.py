@@ -113,11 +113,26 @@ def login():
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
 
+    movies = list(mongo.db.movies.find())
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
+    user_id = mongo.db.users.find_one(
+        {"username": session["user"]})["_id"]
+    # Checks if the current user has uploaded any movie
+    movie_user = mongo.db.movies.find_one({'created_by': user_id})
+
+    # ----- Look at the bottom of the page for comments -----
+    for movie in movies:
+        if movie['created_by'] != user_id:
+            continue
+        else:
+            movie['created_by'] = username
+
     if session["user"]:
-        user_email = mongo.db.users.find_one({"username": session['user']})['email']
-        return render_template("profile.html", username=username, user_email=user_email)
+        user_email = mongo.db.users.find_one(
+            {"username": session['user']})['email']
+        return render_template("profile.html", username=username, 
+                user_email=user_email, movies=movies, movie_user=movie_user)
 
     return redirect(url_for("login"))
 
