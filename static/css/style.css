@@ -13,6 +13,10 @@ body {
     margin-bottom: 40px;
 }
 
+.extra-margin-bt {
+    margin-bottom: 5px;
+}
+
 .extra-mg-bt {
     margin-bottom: 50vh;
 }
@@ -74,6 +78,16 @@ body {
     margin-bottom: 20px
 }
 
+.btn-genre {
+    margin: 0 1px
+}
+
+.btn, 
+.btn-small, 
+.btn-large {
+    border-radius: 30px!important;
+}
+
 [type="radio"]:checked+span:after{
     background-color: rgba(199, 188, 101, 0.8);
     border: 1px solid rgba(199, 188, 101, 0.8);
@@ -100,7 +114,7 @@ body {
 .bg-seet-blur {
     background-color: rgba(26, 26, 26, .95)!important;
     backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px)
+    -webkit-backdrop-filter: blur(3px);
 }
 
 .text-gold {
@@ -153,6 +167,8 @@ input {
     top: 0;
     z-index: 100;
     backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+
 }
 
 .padding-right{
@@ -343,7 +359,7 @@ nav ul a:hover {
        font-size: 20px;
    }
 
-   .btn{
+   .catalogue > .btn{
        width: 130px!important;
    }
 
@@ -352,3 +368,13 @@ nav ul a:hover {
    }
 }
 
+@media (max-width: 320px) {
+    .card-title {
+        font-size: 18px!important;
+    }
+ 
+    .card-genre > .btn-small {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+}
