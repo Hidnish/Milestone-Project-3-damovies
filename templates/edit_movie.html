@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="fas fa-folder-open prefix white-text"></i>
-                        <select id="genre_name" name="genre_name" class="validate" required>
+                        <select id="genre_name" name="genre_name" class="validate hidden" required>
                             <option value="" disabled>Choose Genre</option>
                             {% for genre in genres %}
                                 {% if genre._id == movie.genre %}
@@ -66,8 +66,7 @@
                     <div class="input-field col s12">
                         <i class="fas fa-camera-retro prefix"></i>
                         <input id="cover_image" name="cover_image" maxlength="1000" value="{{ movie.cover_image}}"
-                            type="url" class="validate" aria-describedby="cover_image" pattern="https?://.+"
-                            onchange="DefaultImg();"> <!-- REMEMBERRR -->
+                            type="url" class="validate" aria-describedby="cover_image" pattern="https?://.+"> 
                         <label for="cover_image">Movie cover image: <em> URL (optional)</em></label>
                     </div>
                 </div>
