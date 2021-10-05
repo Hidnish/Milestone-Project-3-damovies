@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
         integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA=="
         crossorigin="anonymous" type="text/css">
@@ -59,16 +61,18 @@
         {% endif %}
     </ul>
 
+    <!-- hero image 1 -->
     <section class="conrainer-fluid hero-container">
         <h2 class="hidden">home image 2</h2>
     </section>
 
+    <!-- website description -->
     <section>
         <div class="row">
             <div class="center-align text-gold extra-margin-top">
                 <h5 class="thin">Welcome to </h5>
                 <h3 class="brand-logo">DaMovies</h3><br><br><br>
-                <p class="font-small thin extra-margin-side">We are a community of cinephiles like you who enjoy discussing and sharing their thoughts on their favorite movies, as well as finding new things to watch.<br><br>Visit our <strong><a href="{{ url_for('get_movies') }}">catalogue</a></strong> or 
+                <p class="font-small thin extra-margin-side">This is a community of cinephiles like you who enjoy discussing and sharing their thoughts on their favorite movies, as well as finding new things to watch.<br><br>Visit our <strong><a href="{{ url_for('get_movies') }}">catalogue</a></strong> or 
                     {% if session.user %}
                     <strong><a href="{{ url_for('add_movie') }}">add a movie</a></strong>
                     {% else %}
@@ -79,10 +83,12 @@
         </div>
     </section>
 
+    <!-- hero image 2 -->
     <section class="conrainer-fluid hero-container-2">
         <h2 class="hidden">home image 1</h2>
     </section>
 
+    <!-- footer -->
     <footer class="page-footer light1 gold-line-top extra-margin-top2">
         <div class="row">
             <div class="col s12 m6 container container-footer text-gold">
