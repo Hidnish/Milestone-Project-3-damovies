@@ -64,7 +64,7 @@ The service is aimed at an english-speaking audience that wants to watch new mov
     - I want to be able to delete movies I have uploaded
 
 - As a returning and/or frequent visitor
-    - I want to easily log-in in to the website
+    - I want to easily sign-in in to the website
     - When I have questions about the website, I want to find information about the website owner/administrator  
 
 #### Strategy 
