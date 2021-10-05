@@ -68,14 +68,17 @@ def register():
             register = {
                 "username": request.form.get("username").lower(),
                 "email": request.form.get("userEmail"),
-                "password": generate_password_hash(request.form.get("password"))
+                "password": generate_password_hash(
+                    request.form.get("password"))
             }
             mongo.db.users.insert_one(register)
 
             session["user"] = request.form.get("username").lower()
-            user_email = mongo.db.users.find_one({"username": session['user']})['email']
+            user_email = mongo.db.users.find_one(
+                {"username": session['user']})['email']
             flash("Registration Successful!")
-            return redirect(url_for("profile", username=session["user"], user_email=user_email))
+            return redirect(url_for("profile", username=session["user"],
+                                    user_email=user_email))
         else:
             flash("Passwords must match")
 
@@ -88,16 +91,19 @@ def login():
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
-     
+
         if existing_user:
             # ensure hashed password matches user input
-            if check_password_hash(existing_user["password"], request.form.get("password")):
+            if check_password_hash(existing_user["password"],
+                                   request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
-                user_email = mongo.db.users.find_one({"username": session['user']})['email']
+                user_email = mongo.db.users.find_one(
+                    {"username": session['user']})['email']
                 flash("Welcome, {}".format(
                     request.form.get("username")))
                 return redirect(url_for(
-                    "profile", username=session["user"], user_email=user_email))
+                    "profile", username=session["user"],
+                    user_email=user_email))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -131,8 +137,9 @@ def profile(username):
     if session["user"]:
         user_email = mongo.db.users.find_one(
             {"username": session['user']})['email']
-        return render_template("profile.html", username=username, 
-                user_email=user_email, movies=movies, movie_user=movie_user)
+        return render_template("profile.html", username=username,
+                               user_email=user_email, movies=movies,
+                               movie_user=movie_user)
 
     return redirect(url_for("login"))
 
@@ -179,11 +186,13 @@ def edit_movie(movie_id):
 
         genre = mongo.db.genres.find_one(
             {'genre_name': request.form.get("genre_name")})
-        # Prevent name of user who posted the movie from changing once admin edits it
+        # Variable created to prevent name of user who posted the movie from..
+        # ..changing once admin edits it
         movie = mongo.db.movies.find_one(
             {'_id': ObjectId(movie_id)})["created_by"]
         user = mongo.db.users.find_one({'_id': movie})
-        # Prevent ratings and comments from disappearing after movie is edited 
+        # Variables created to prevent ratings and comments..
+        # ..from disappearing after movie is edited
         ratings = mongo.db.movies.find_one(
             {"_id": ObjectId(movie_id)})['ratings']
         average = mongo.db.movies.find_one(
@@ -281,7 +290,8 @@ def rate_movie(movie_id, movie_title):
     # If rating from user already exists, update it
     if existing_rating:
         mongo.db.movies.update({"_id": ObjectId(movie_id),
-            "ratings.user": user_id}, {"$set": {"ratings.$.rating": rating}})
+                                "ratings.user": user_id}, {
+                                    "$set": {"ratings.$.rating": rating}})
         flash("Rating Updated")
     else:
         # If user has not rated the movie yet, add new rating
@@ -334,7 +344,7 @@ def delete_comment(movie_id, comment_id, user_id):
     return redirect(url_for("get_movies"))
 
 
-# error handlers
+# Error handlers
 @app.errorhandler(404)
 def error_400(e):
     return render_template('error.html'), 404
