@@ -297,9 +297,9 @@ Testing documentation, including User Stories, can be found here: [Testing](stat
 
 #### Solved bugs
 
-1. Navbar was disappearing on page load: The issue has been solved by setting display: 'block' on page load, for desktop browsers, and by setting fixed-top navbar for mobile browsers (as the navbar was oversensitive to window scroll, causing additional issues.)
-2. When selecting a location from the respective menu, the popup for the location's marker was overflowing out of the map (in smaller screen sizes): The issue has been solves by centring the popup in the middle of the map, rather than the marker.
-3. When pressing the DAY or NIGHT button in the 'Location section', the map gets populated with all the markers connected to the relevant locations (all collected into a layer). However, I could not connect each specific marker to the respective button from the "locations' list": The issue has been solved by setting the map so that when pressing a specific location button, the map would clear from all the markers present and would generate a single new marker for the desired location.
+1. The website used to delete all comments and ratings attached to a movie when it was edited. To solve this problem I have adjusted the add_movie function so that it would create empty fields for "Ratings", "Average" (of ratings) and "Comments" when a new movie was added to the catalogue. Then, if a  Movie was edited, in case there were any rating or comment attached to it, I made sure the edit_movie function would keep the existing values for "Ratings", "Average" (of ratings) and "Comments". 
+2. The website used to change the name of the user who posted a movie when it was edited. To solve the problem I made sure that the original name would be saved in the edit_movie function and not substituted by the name of the current user who edited the movie. 
+3. When a movie genre was deleted from the genres list while still being connected to a movie, the action was causing some movies from the catalogue to switch another genre. This problem has been solved by ensuring that the admin must take away all movies attached to a genre before deleting the genre.
 
 #### Unsolved bugs
 

@@ -1,4 +1,4 @@
-## DaMovies - Testing
+# DaMovies - Testing Documentation
 
 <br>
 
@@ -11,12 +11,12 @@
 2. [**Manual Testing**](#manual-testing)
       
 3. [**Automated Testing**](#automated-testing)
-    - **W3C Markup Validator Results**
-    - **W3C CSS Validator Results**
-    - **JSHint Results**
-    - **PEP8 Online Validator Results**
+    - **HTML**
+    - **CSS**
+    - **JavaScript**
+    - **Python**
 
-3. [**Bugs Discovered**](#bugs-discovered)
+4. [**Responsiveness**](#responsiveness)
 
 <br>
 
@@ -32,7 +32,7 @@
 
     - Right below the home hero-image, the user will find a section that describes the website's purpose
 
-- I want the site navigation to be intutive and user friendly
+- I want the site navigation to be intuitive and user friendly
 
     - On top of every page there is a fixed navbar (except the 'error' page) which links to the main pages of the website. 
 
@@ -213,32 +213,64 @@
 
 <br>
 
-### HTML
+#### HTML
 
 HTML code was passed through [HTML Validator](https://validator.w3.org/).
 - No errors found or warnings shown
 
 <br>
 
-### CSS
+#### CSS
 
 CSS code was passed through [CSS Validator](https://jigsaw.w3.org/css-validator/)
 - No errors found or warnings shown
 
 <br>
 
-### JavaScript
+#### JavaScript
 
 Javascript code was passed through [JSHINT](https://jshint.com/)
 - No errors found. Warnings for the "$" sign from Jquery which was not recognised by the code validator 
 
 <br>
 
-### Python
+#### Python
 
 Python code was passed trhough [PEP8 Online Check](http://pep8online.com/)
 - No erros found or warning shown 
 
+<br>
+
+---
+
+### Responsiveness 
+
+<br>
+
+
+- The Website was tested on the following browsers:
+    - Google Chrome
+    - Safari
+    - Opera
+    - Firefox
+    - Microsoft Edge
+- The Website was tested on a variety of screen sizes using Google Developer Tools: 
+    - iPhone 5 
+    - iPhone 6/7/8 
+    - iPhone X 
+    - Samsung Galaxy S III
+    - Motorola Nexus 6
+    - iPad
+    - iPad Pro 
+    - Microsoft Surface Duo 
+    - 19-inch screen (1280px)
+    - 20-inch screen (1600px)
+    - Widescreen (1920px)
+- The Website was tested on physical devices:   
+    - iPhone 6s
+    - iPhone 8
+    - MacBook Air
+- [Google mobile-friendly test](https://search.google.com/test/mobile-friendly?id=5Pz7BqGGcZdRd5o9rkxA9A): All pages in the website (except the profile page which was not accessible through the validator) passed the test as mobile friendly
 
 
 
