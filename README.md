@@ -13,17 +13,15 @@ This is "DaMovie", a website dedicated to cinema lovers who want to share opinio
 ### Table of Contents
 
 - [UX](#ux)
-    - [User Stories](#user-stories)
-    - [Strategy](#A-strategy)
-    - [Scope](#B-scope)
-    - [Structure](#C-structure)
-    - [Skeleton](#D-skeleton)
-    - [Surface](#E-surface)
-- [Features](#Features)
+    - User Stories
+    - Strategy
+    - Design
+- [Features](#features)
+- [Database](#database)
 - [Technologies Used](#technologies-used)
     - [Languages](#languages)
     - [Integration](#integration)
-    - [Workspace, version control and Repository storage](#workspace-version-control-and-repository-storage)
+    - [Workspace, version control, repository storage and deployment](#workspace-version-control-repository-storage-and-deployment)
 - [Resources](#resources)
     - [Sources of knowledge](#sources-of-knowledge)
     - [Other resources](#other-resources)
@@ -41,13 +39,19 @@ This is "DaMovie", a website dedicated to cinema lovers who want to share opinio
     - [Code](#code)
     - [Acknowledgement](#acknowledgement)
 
+<br>
+
 --- 
 
 ## UX
 
+<br>
+
 The service is aimed at an english-speaking audience that wants to watch new movies and share their thoughts on movies they've seen before.
 
 #### User Stories 
+
+<br>
 
 - As a first time visitor
     - I want to easily understand the main purpose of the site
@@ -69,6 +73,8 @@ The service is aimed at an english-speaking audience that wants to watch new mov
 
 #### Strategy 
 
+<br>
+
 ##### Project Goals:
 - To provide users with a web application where to share and discuss movies (via CRUD operations):
     - Create: By adding movies to the catalogue
@@ -85,14 +91,9 @@ The service is aimed at an english-speaking audience that wants to watch new mov
 - To contribute to the website community by adding new movies to the catalogue
 - To navigate the website smoothly and intuitively.
 
-#### Skeleton
-
-- [Wireframes](assets/docs/wireframes.pdf)
-- Interactive navbar (fixed on mobile browsers) with 4 links + logo.
-- Home, About, Locations (map) and Contact sections.
-- Footer with social media links and copyright message.
-
 #### Design  
+
+<br>
 
 ##### Colors 
 
@@ -118,13 +119,16 @@ Combining black and gold seemed like the right choice to create a classy cinemat
 
 - On the home page, images were chosen to give the user the feeling of being at the movies as well as add a retro look to the website. 
 
+<br>
+
 --- 
 
 ## Features 
 
+<br>
+
 - Designed with HTML5, CSS3, JavaScript + libraries (Materialize, jQuery).
 
-    <img src="assets/images/readme-img/homepage.png" alt="homepage" width="70%"/>
 
 - **General features (apply to all pages except 404)**:
     - Fixed navbar on top of the page with links to:
@@ -136,13 +140,24 @@ Combining black and gold seemed like the right choice to create a classy cinemat
     - Responsive site on all devices
     - Collapsible navbar, with 'hamburger button', under 992px breakpoint 
 
+    <br>
+
+    <img src="static/docs/readme_imgs/navbar.png" alt="navbar" width="70%"/>
+
+    <img src="static/docs/readme_imgs/footer.png" alt="footer" width="70%"/>
+
+    <br>
+
 - **Home page**:
     - Information about the website and its purpose.
     - Links to 'catalogue' and 'log-in/register' pages for users who have not signed-in yet.
     - Links to 'catalogue' and 'add movie' pages for users who have already signed-in. 
-    <br><br>
+
+    <br>
+
+    <img src="static/docs/readme_imgs/home.png" alt="home" width="70%"/>
     
-    <img src="assets/images/readme-img/about.png" alt="about section" width="70%"/>
+    <br>
 
 - **'Catalogue' page**:
     - Search bar to look for specific movies (filtered by title or director's name).
@@ -157,7 +172,9 @@ Combining black and gold seemed like the right choice to create a classy cinemat
     - Flash messages sections (Informs the user whether his/her actions were successfully completed, i.e. upload a movie, edit a movie, add a comment, etc.)
     <br><br>
 
-    <img src="assets/images/readme-img/locationsd.png" alt="location section 1" width="70%"/>
+    <img src="static/docs/readme_imgs/catalogue.png" alt="catalogue" width="70%"/>
+
+    <br>
 
 - **'Add Movies' page (only for signed-in users)**:
     - Form where the user can provide information about the movie they want to upload:
@@ -170,6 +187,11 @@ Combining black and gold seemed like the right choice to create a classy cinemat
     - Submit button (which also redirects the user to the movie catalogue)
     - Flash messages sections (Informs the user whether his/her actions were successfully completed, i.e. upload a movie, edit a movie, add a comment, etc.)
 
+    <br>
+
+    <img src="static/docs/readme_imgs/add_movies.png" alt="add_movies" width="70%"/>
+
+
 - **'Manage Genres' page (only for administrator)**:
     - 'Add genre' button (which redirects to the 'Add genres' page)
     - List of movie genres, each featured with:
@@ -177,11 +199,19 @@ Combining black and gold seemed like the right choice to create a classy cinemat
         - Delete button
     - Flash messages sections (Informs the user if there is any issue, i.e. user cannot delete specific unless all movies of that genre in the catalogue are also deleted)
 
+    <br>
+
+    <img src="static/docs/readme_imgs/genres.png" alt="genres" width="70%"/>
+
 - **'Profile' page (only for signed-in users)**:
     - Section with:
         - User's username and email
         - List of movies uploaded by the user
         - Flash messages sections (To welcome the user once he/she has signed-in)
+
+    <br>
+
+    <img src="static/docs/readme_imgs/profile.png" alt="profile" width="70%"/>
 
 - **'Sign-in' page (only for NOT signed-in users)**:
     - Form that requires the user to insert correct username and password
@@ -189,9 +219,9 @@ Combining black and gold seemed like the right choice to create a classy cinemat
     - Link to 'Register' page
     - Flash messages sections (Informs the user if there is any issue, i.e. wrong password)
 
-    <img src="assets/images/readme-img/contact.png" alt="contact section" width="70%"/>
+    <br>
 
-    <img src="assets/images/readme-img/footer.png" alt="footer" width="70%"/>
+    <img src="static/docs/readme_imgs/signin.png" alt="signin" width="70%"/>
 
 ### Pages not accessible via navbar 
 
@@ -204,32 +234,79 @@ Combining black and gold seemed like the right choice to create a classy cinemat
     - Submit button (which also redirects the user to the profile page)
     - Flash messages sections (Informs the user if there is any issue, i.e. username already exists, passwords do not march)
 
+    <br>
+
+    <img src="static/docs/readme_imgs/register.png" alt="register" width="70%"/>
+
 - **'Edit Movie' page (only for signed-in users)**: accessible by clickin on movie 'edit' button - see above in 'Catalogue' page
     - Form identical to the 'Add movie' page's one. However it is already filled in with the old movie infos.
     - Submit button (which also redirects the user to the movie catalogue)
+
+    <br>
+
+    <img src="static/docs/readme_imgs/edit_movie.png" alt="edit_movies" width="70%"/>
 
 - **'Add genre' page (only for webiste administrator)**: Accessible by clicking on genre 'Add Genre' button - see above in: 'Manage Genres' page
     - Form with selected genre name to be edited
     - Submit button (which also redirects the user to the 'Manage Genres' page)
 
+    <br>
+
+    <img src="static/docs/readme_imgs/add_genre.png" alt="add_genre" width="70%"/>
+
 - **'Edit genre' page (only for webiste administrator)**: Accessible by clicking on genre 'edit' button - see above in: 'Manage Genres' page
     - Form with selected genre name to be edited
     - Submit button (which also redirects the user to the 'Manage Genres' page)
+
+    <br>
+
+    <img src="static/docs/readme_imgs/edit_genre.png" alt="edit_genre" width="70%"/>
 
 
 - **'Error' page**:
     - Link to home page
 
-    <img src="assets/images/readme-img/404.png" alt="404 page" width="70%"/>
+    <br>
+
+    <img src="static/docs/readme_imgs/error.png" alt="error" width="70%"/>
 
 #### Future prospects
 
 - Section where users can watch movie trailers 
 - Section to show what streaming services provide the movies from the catalogue
 
+<br>
+
+---
+
+## Database 
+
+<br>
+
+### Database Design
+
+<br>
+
+MongoDB Atlas is used as non-relational database for storing users, movies and genres' details. There are three collections in total. 
+The 'movies' collection is associated to the other collections via object ID:
+- movies.created_by = users._id
+- movies.genre = genres._id
+
+<br>
+
+### Database schema
+
+<br>
+
+![Database](static/docs/readme_imgs/damoviesDB.png)
+
+<br>
+
 ---
 
 ## Technologies Used 
+
+<br>
 
 #### Languages 
 
@@ -272,10 +349,22 @@ Combining black and gold seemed like the right choice to create a classy cinemat
 4. [Heroku](https://dashboard.heroku.com/)
     - Cloud platform used to deploy application.
 
+#### Database Management
+
+<br>
+
+1. [MongoDB](https://www.mongodb.com/3)
+    - Used for database functionality.
+2. [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) 
+    - Used to host the database.
+
+<br>
 
 ---
 
 ## Resources !!!!!!!!!!!!!!!
+
+<br>
 
 #### Sources of knowledge
 - SLACK Community - Source of assistance and inspiration. 
@@ -291,6 +380,8 @@ Combining black and gold seemed like the right choice to create a classy cinemat
 ---
 ## Code validation 
 
+<br>
+
 ### Testing
 
 Testing documentation, including User Stories, can be found here: [Testing](static/docs/TESTING.md) 
@@ -299,29 +390,39 @@ Testing documentation, including User Stories, can be found here: [Testing](stat
 
 1. The website used to delete all comments and ratings attached to a movie when it was edited. To solve this problem I have adjusted the add_movie function so that it would create empty fields for "Ratings", "Average" (of ratings) and "Comments" when a new movie was added to the catalogue. Then, if a  Movie was edited, in case there were any rating or comment attached to it, I made sure the edit_movie function would keep the existing values for "Ratings", "Average" (of ratings) and "Comments". 
 2. The website used to change the name of the user who posted a movie when it was edited. To solve the problem I made sure that the original name would be saved in the edit_movie function and not substituted by the name of the current user who edited the movie. 
-3. When a movie genre was deleted from the genres list while still being connected to a movie, the action was causing some movies from the catalogue to switch another genre. This problem has been solved by ensuring that the admin must take away all movies attached to a genre before deleting the genre.
+3. When a movie genre was deleted from the genres list while still being connected to a movie, the action was causing some movies from the catalogue to switch to another genre. This problem has been solved by ensuring that the admin must take away all movies attached to a genre before deleting it.
 
 #### Unsolved bugs
 
-1. Sometimes, the home slideshow becomes shows the white background instead of displaying the next picture.
-2. When clicking on a location button for the first time, the map does not center the marker's popup. This causes the popup to partly overflow out of the map in small screen sizes. However, the problem does not reoccur after the first click. 
-3. On certain mobile browsers (i.e. Safari), it is sometimes necessary to hold pressed on a marker (on the map) in order to open the popup attached, instead of just tapping on it.
+1. Sometimes, the text arena for comments on movies is not responsive and must be clicked several times before it starts working, allowing the user to type in. One way to solve the problem is to submit the message without any input so that the "Please fill in this field" would appear and the user can start writing. However, I am aware that users should be able to write a comment directly, without have to use any "trick", for a better UX.
+2. Users can create different accounts using the same email.
 
 ---
 
 ## GitHub Pages
 
-#### Deploying the project on GitHub Pages
+<br>
+
+### Requirements to deploy:
+
+* An IDE (Gitpod)
+* Python3 (To run the application and use Flask)
+* PIP3 (To install all application dependencies, such as Flask and OS)
+* A template folder (To link app routes using Flask)
+* A could database (MongoDB Atlas)
+
+
+### GitHub Pages
 
   1. Log in to GitHub and locate the GitHub Repository
   2. At the top of the Repository (not top of page), locate the "Settings" Button on the menu ("gear" icon).
   3. Scroll down the Settings page until you locate the "GitHub Pages" Section.
   4. You will find the current message: "Pages settings now has its own dedicated tab! Check it out here!". Click the link.
-  5. Under "Source", click the dropdown called "None" and select "Master Branch".
+  5. Under "Source", click the dropdown called "None" and select "Master/Main Branch".
   6. The page will automatically refresh.
   7. Go back to step 4, once you have clicked the link, you will find the published site link.
 
-#### Forking the GitHub Repository
+### Forking the GitHub Repository
 
   By forking the GitHub Repository you make a copy of the original repository on your GitHub account to view and/or make changes without affecting the original repository. Forking requires the following steps:
 
@@ -329,15 +430,87 @@ Testing documentation, including User Stories, can be found here: [Testing](stat
   2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
   3. You should now have a copy of the original repository in your GitHub account.
 
-#### Making a local clone of the GitHub Repository
+### Making a local clone of the GitHub Project
 
   1. On GitHub, navigate to the main page of the repository.
   2. Above the list of files, click the green 'Code' button.
   3. To clone the repository using HTTPS, under "Clone with HTTPS", copy the link.
   4. Open Terminal
   5. Change the current working directory to the location where you want the cloned directory to be made.
-  6. Type 'git clone', and then paste the URL you copied in Step 3: (https://github.com/Hidnish/Milestone-Project-2-Kyoto.git).
+  6. Type 'git clone', and then paste the URL you copied in Step 3.
   7. Press Enter. Your local clone will be created.
+  8. Install the necessary requirements from the requirements.txt file using the command `pip3 install -r requirements.txt`
+  9. Create an `env.py` file where you will store the following information:
+
+  - os.environ.setdefault`("IP", "0.0.0.0")`
+  - os.environ.setdefault`("PORT", "5000")`
+  - os.environ.setdefault`("SECRET_KEY", "<your_secret_key>")`
+  - os.environ.setdefault`("MONGO_URI", "mongodb+srv://<username>:<password>@<cluster_name>.mongodb.net/<database>?retryWrites=true&w=majority")`
+  - os.environ.setdefault`("MONGO_DBNAME", "<db_name>")`
+
+  10. Sign up on [MongoDB](https://www.mongodb.com) and create database  (You can name it **da_movies**). The app will use the 'Collections' in the database to perform CRUD operations (the app will generate the fields, without having to do it manually in the database).
+  See the database structure:
+
+**genres**
+```
+    _id: <ObjectId>
+    genre_name: <String>
+```
+**movies**
+```
+    _id: <ObjectId>
+    title: <String>
+    cover_image: <String>
+    director: <String>
+    genre: <ObjectId>
+    plot: <String>
+    year: <String>
+    created_by: <ObjectId>
+    ratings: <Array>
+
+        object_number[i] : <Object>
+
+                rating: <Int32>
+                user: <ObjectId>
+
+    average: <Object>
+
+        _id : <string>
+        average : <int32>
+
+    comments: <Array>
+
+        object_number[i] : <Object>
+
+            comment: <string>
+            user: <string>
+```
+**users**
+```
+    _id: <ObjectId>
+    username: <string>
+    email: <string>
+    password: <string>
+```
+
+### Remote Deployment on Heroku
+
+1. Create a requirement.txt file to allow Heroku to install the required dependencies to run the app. Type the following in the CLI: `pip3 freeze --local > requirements.txt`
+2. Create a Procfile to inform Heroku about the type of app is being deployed by typing the following in the CLI: `echo web: python run.py > Procfile`.
+3. Do git add and git commit for the new requirements and Procfile. Then git push the project to GitHub.
+4. Create a Heroku account, or sign in if you already have one. Once signed in click the "New" button on the dashboard to create a new app.
+5. Name the app and specify the region based on where you live (America or Europe). 
+6. From the app dashboard, navigate to the "Deploy" tab.
+7. From deployment method options select "Github". Then click "Search" and select your repository name. Once found, click "Connect".
+8. After you connected your repository, click on the "Settings" tab on the app dashboard, click on "Reveal Config Vars" and add your configuration variables to Heroku as shown below:
+ - IP: `0.0.0.0`
+ - PORT: `5000`
+ - MONGO_URI: `mongodb+srv://<username>:<password>@<cluster_name>.mongodb.net/<database>?retryWrites=true&w=majority`
+ - SERCET_KEY: `<your_value>`
+9. Navigate to the "Deploy" tab, and from Manual deploy choose your master branch. Then click "Deploy Branch".
+10. After you deployed your branch select "Enable Automatic Deploys".
+11. The website is now successfully deployed.
+
 
 ---
 
@@ -351,21 +524,14 @@ Testing documentation, including User Stories, can be found here: [Testing](stat
 
 #### Content 
 
-- About section content was partly based on: 
-    - [Culture Trip: 10 Historical Landmarks to see in Kyoto](https://theculturetrip.com/asia/japan/articles/10-historical-landmarks-to-see-in-kyoto/)
-    - [Culture Trip: The most beautiful parks in Kyoto](https://theculturetrip.com/asia/japan/articles/the-most-beautiful-parks-in-kyoto/)
-- Information about specific locations was based on:
+- Information about movies were taken from: 
     - [Google](https://www.google.com/)
     
 #### Code 
 
 - Main sources (Specific credits are provided in the respective files, above each piece of code):
-    - [W3Scgools](https://www.w3schools.com/)
     - [Stack Overflow](https://stackoverflow.com/)
-    - [YouTube](https://www.youtube.com/)
-    - [CSS-Tricks](https://css-tricks.com/)
-    - [CI-MS2-Safari-Africa](https://github.com/JimLynx/CI-MS2-Safari-Africa)
-    - Code Institute tutorial: Rosie - Resume Project.
+    - Code Institute tutorial: Flask - Task Manager Project.
 
 #### Acknowledgement
 

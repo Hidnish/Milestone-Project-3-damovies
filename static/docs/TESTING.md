@@ -215,8 +215,10 @@
 
 #### HTML
 
-HTML code was passed through [HTML Validator](https://validator.w3.org/).
+HTML code was passed through [HTML Validator](https://validator.w3.org/) via URI.
+- 'Profile' page could not be tested via URI. As a solution I have removed the jinja code and copy-pasted the code directly in the validator. 
 - No errors found or warnings shown
+
 
 <br>
 
