@@ -1,43 +1,52 @@
 # DaMovies
 
-<img src="assets/images/readme-img/responsive.png" alt="about section" width="70%"/> !!!
+<img src="static/docs/readme_imgs/Responsive.png" alt="website display" width="70%"/>
 
 [Link to the live site on Heroku](http://milestone-project-3-damovies.herokuapp.com/)
 
+<br>
+
 #### Overview
 
-This is "DaMovie", a website dedicated to cinema lovers who want to share opinions on their favoirite movies and discover new ones! Once they have created their account, users can add, comment and rate movies in the catalogue.
+<br>
+
+This is "DaMovie", a website dedicated to cinema lovers who want to share opinions on their favourite movies and discover new ones! Once they have created their account, users can add, comment and rate movies in the catalogue.
 
 ---
 
 ### Table of Contents
 
+<br>
+
 - [UX](#ux)
     - User Stories
     - Strategy
     - Design
+    - Wireframes
 - [Features](#features)
 - [Database](#database)
 - [Technologies Used](#technologies-used)
-    - [Languages](#languages)
-    - [Integration](#integration)
-    - [Workspace, version control, repository storage and deployment](#workspace-version-control-repository-storage-and-deployment)
+    - Languages
+    - Integration
+    - Workspace, version control, repository storage and deployment
 - [Resources](#resources)
-    - [Sources of knowledge](#sources-of-knowledge)
-    - [Other resources](#other-resources)
+    - Sources of knowledge
+    - Other resources
 - [Code Validation](#code-validation)
-    - [Testing](#testing)
-    - [Solved bugs](#solved-bugs)
-    - [Unsolved bugs](#unsolved-bugs)
-- [GitHub Pages](#github-pages)
-    - [Deployment](#deploying-the-project-on-github-pages)
-    - [Forking](#forking-the-github-repository)
-    - [Cloning](#making-a-local-clone-of-the-github-repository)
+    - Testing
+    - Solved bugs
+    - Unsolved bugs
+- [Deployment](#deployment)
+    - Requirements to deploy
+    - Github pages
+    - Forking the GitHub Repository
+    - Making a local clone of the GitHub Project
+    - Making a local clone of the GitHub Project
 - [Credits](#credits)
-    - [Media](#media)
-    - [Content](#content)
-    - [Code](#code)
-    - [Acknowledgement](#acknowledgement)
+    - Media
+    - Content
+    - Code
+    - Acknowledgement
 
 <br>
 
@@ -49,7 +58,9 @@ This is "DaMovie", a website dedicated to cinema lovers who want to share opinio
 
 The service is aimed at an english-speaking audience that wants to watch new movies and share their thoughts on movies they've seen before.
 
-#### User Stories 
+<br>
+
+### User Stories 
 
 <br>
 
@@ -71,11 +82,13 @@ The service is aimed at an english-speaking audience that wants to watch new mov
     - I want to easily sign-in in to the website
     - When I have questions about the website, I want to find information about the website owner/administrator  
 
-#### Strategy 
+<br>
+
+### Strategy 
 
 <br>
 
-##### Project Goals:
+#### Project Goals:
 - To provide users with a web application where to share and discuss movies (via CRUD operations):
     - Create: By adding movies to the catalogue
     - Read: By searching and filtering movies in the catalogue
@@ -84,20 +97,22 @@ The service is aimed at an english-speaking audience that wants to watch new mov
 - To increase traffic and expand the website community
 - Developing a partnership with streaming services as a future goal 
 
-##### Customer Goals:
+#### Customer Goals:
 - To find new movies to watch
 - To see other users' reviews about the movies from the catalogue
 - To rate and comment movies I have already watched
 - To contribute to the website community by adding new movies to the catalogue
 - To navigate the website smoothly and intuitively.
 
-#### Design  
+<br>
+
+### Design  
 
 <br>
 
-##### Colors 
+#### Colors 
 
-The color scheme for the website consist of three main colors: black, gold and white. Black is used as based color for the website, gold for texts, buttons and decorations, and white for texts and icons. Grey shades are also used to differentiate certain elements from the black background (i.e. navbar, forms and buttons). 
+The color scheme for the website consist of three main colours: black, gold and white. Black is used as based colour for the website, gold for texts, buttons and decorations, and white for texts and icons. Grey shades are also used to differentiate certain elements from the black background (i.e. navbar, forms and buttons). 
 
 Combining black and gold seemed like the right choice to create a classy cinematic feel for the website. Using white creates contrast with the black background and keeps text as readable as possible.
 
@@ -108,16 +123,25 @@ Combining black and gold seemed like the right choice to create a classy cinemat
 - ![#131313](https://via.placeholder.com/15/131313/000000?text=+) `#131313`
 - ![#1a1a1a](https://via.placeholder.com/15/1a1a1a/000000?text=+) `#1a1a1a`
 
-##### Typography
+#### Typography
 
 - "Monoton" for: Logo, with the intention of giving it a cinematic feel.
 - "Roboto" for: for the rest of the text. This is the default font when using the Materialize library. The choice of using it was due to the fact that is simple, clean and gives the website a professional look.
 - "Sans-serif" as fall-back font for every text.
 
 
-##### images
+#### images
 
 - On the home page, images were chosen to give the user the feeling of being at the movies as well as add a retro look to the website. 
+
+<br>
+
+### Wireframes 
+
+- [Desktop](static/docs/wireframes/desktop.png) 
+- [Tablet](static/docs/wireframes/tablet.png) 
+- [Mobile](static/docs/wireframes/mobile.png) 
+
 
 <br>
 
@@ -135,7 +159,7 @@ Combining black and gold seemed like the right choice to create a classy cinemat
         - Home, catalogue (for all users)
         - Sign-in/register (for not signed-in users)
         - Add movies, Profile, sign-out (for signed-in users)
-        - Manage generes (for website administrator only)
+        - Manage genres (for website administrator only)
     - Footer with link to home page and Github account
     - Responsive site on all devices
     - Collapsible navbar, with 'hamburger button', under 992px breakpoint 
@@ -223,7 +247,11 @@ Combining black and gold seemed like the right choice to create a classy cinemat
 
     <img src="static/docs/readme_imgs/signin.png" alt="signin" width="70%"/>
 
+<br>
+
 ### Pages not accessible via navbar 
+
+<br>
 
 - **'Register' page (only for NOT signed-in users)**: Accessible via link from 'Sign-in' page 
     - Form that requires the user to insert:
@@ -362,7 +390,7 @@ The 'movies' collection is associated to the other collections via object ID:
 
 ---
 
-## Resources !!!!!!!!!!!!!!!
+## Resources 
 
 <br>
 
@@ -373,8 +401,6 @@ The 'movies' collection is associated to the other collections via object ID:
 #### Other resources 
 - [Balsamiq](https://balsamiq.com/wireframes/) - For designing wireframes.
 - [TinyPNG](https://tinypng.com/) - For compression of images.
-- [Toolur](https://compressimage.toolur.com) - For re-sizing images.
-- [Autoprefixer](https://autoprefixer.github.io/) - Used to parse CSS and add vendor prefixes.
 - [Google Mobile-Friendly Test](https://search.google.com/test/mobile-friendly) - To check whether the website is Mobile-friendly.
 
 ---
@@ -386,24 +412,34 @@ The 'movies' collection is associated to the other collections via object ID:
 
 Testing documentation, including User Stories, can be found here: [Testing](static/docs/TESTING.md) 
 
+<br>
+
 #### Solved bugs
+
+<br>
 
 1. The website used to delete all comments and ratings attached to a movie when it was edited. To solve this problem I have adjusted the add_movie function so that it would create empty fields for "Ratings", "Average" (of ratings) and "Comments" when a new movie was added to the catalogue. Then, if a  Movie was edited, in case there were any rating or comment attached to it, I made sure the edit_movie function would keep the existing values for "Ratings", "Average" (of ratings) and "Comments". 
 2. The website used to change the name of the user who posted a movie when it was edited. To solve the problem I made sure that the original name would be saved in the edit_movie function and not substituted by the name of the current user who edited the movie. 
 3. When a movie genre was deleted from the genres list while still being connected to a movie, the action was causing some movies from the catalogue to switch to another genre. This problem has been solved by ensuring that the admin must take away all movies attached to a genre before deleting it.
 
+<br>
+
 #### Unsolved bugs
+
+<br>
 
 1. Sometimes, the text arena for comments on movies is not responsive and must be clicked several times before it starts working, allowing the user to type in. One way to solve the problem is to submit the message without any input so that the "Please fill in this field" would appear and the user can start writing. However, I am aware that users should be able to write a comment directly, without have to use any "trick", for a better UX.
 2. Users can create different accounts using the same email.
 
 ---
 
-## GitHub Pages
+## Deployment
 
 <br>
 
 ### Requirements to deploy:
+
+<br>
 
 * An IDE (Gitpod)
 * Python3 (To run the application and use Flask)
@@ -414,6 +450,8 @@ Testing documentation, including User Stories, can be found here: [Testing](stat
 
 ### GitHub Pages
 
+<br>
+
   1. Log in to GitHub and locate the GitHub Repository
   2. At the top of the Repository (not top of page), locate the "Settings" Button on the menu ("gear" icon).
   3. Scroll down the Settings page until you locate the "GitHub Pages" Section.
@@ -422,7 +460,11 @@ Testing documentation, including User Stories, can be found here: [Testing](stat
   6. The page will automatically refresh.
   7. Go back to step 4, once you have clicked the link, you will find the published site link.
 
+<br>
+
 ### Forking the GitHub Repository
+
+<br>
 
   By forking the GitHub Repository you make a copy of the original repository on your GitHub account to view and/or make changes without affecting the original repository. Forking requires the following steps:
 
@@ -430,7 +472,11 @@ Testing documentation, including User Stories, can be found here: [Testing](stat
   2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
   3. You should now have a copy of the original repository in your GitHub account.
 
+<br>
+
 ### Making a local clone of the GitHub Project
+
+<br>
 
   1. On GitHub, navigate to the main page of the repository.
   2. Above the list of files, click the green 'Code' button.
@@ -446,7 +492,7 @@ Testing documentation, including User Stories, can be found here: [Testing](stat
   - os.environ.setdefault`("PORT", "5000")`
   - os.environ.setdefault`("SECRET_KEY", "<your_secret_key>")`
   - os.environ.setdefault`("MONGO_URI", "mongodb+srv://<username>:<password>@<cluster_name>.mongodb.net/<database>?retryWrites=true&w=majority")`
-  - os.environ.setdefault`("MONGO_DBNAME", "<db_name>")`
+  - os.environ.setdefault`("MONGO_DBNAME", "<database_name>")`
 
   10. Sign up on [MongoDB](https://www.mongodb.com) and create database  (You can name it **da_movies**). The app will use the 'Collections' in the database to perform CRUD operations (the app will generate the fields, without having to do it manually in the database).
   See the database structure:
@@ -493,7 +539,11 @@ Testing documentation, including User Stories, can be found here: [Testing](stat
     password: <string>
 ```
 
+<br>
+
 ### Remote Deployment on Heroku
+
+<br>
 
 1. Create a requirement.txt file to allow Heroku to install the required dependencies to run the app. Type the following in the CLI: `pip3 freeze --local > requirements.txt`
 2. Create a Procfile to inform Heroku about the type of app is being deployed by typing the following in the CLI: `echo web: python run.py > Procfile`.
@@ -516,11 +566,13 @@ Testing documentation, including User Stories, can be found here: [Testing](stat
 
 ## Credits
 
+<br>
+
 #### Media 
 
-- All the pictures uploaded were retrived from: [Unsplash](https://unsplash.com/s/photos/kyoto) 
-- Favicon taken from: [123RF](https://www.123rf.com/photo_65360684_stock-vector-japanese-temple-icon-illustration-isolated-sign-symbol.html)
-- Custom font "Japanese Brush Master" taken from: [Online Web Fonts](https://www.onlinewebfonts.com/download/fc87c87c07938e0484418e4c0a773b02)
+- Pictures for home page were retrived from: 
+    - [Indiewire](https://www.indiewire.com/2014/01/why-white-people-dont-like-black-movies-162548/) 
+    - [WIRED](https://www.wired.com/2014/08/sin-city-review/)
 
 #### Content 
 
@@ -529,11 +581,11 @@ Testing documentation, including User Stories, can be found here: [Testing](stat
     
 #### Code 
 
-- Main sources (Specific credits are provided in the respective files, above each piece of code):
+- Code sources:
     - [Stack Overflow](https://stackoverflow.com/)
     - Code Institute tutorial: Flask - Task Manager Project.
 
 #### Acknowledgement
 
-- Thanks to my mentor : Oluwafemi Medale, for his support and feedback.
+- Thanks to my mentor: Antonio Rodriguez, for his support and feedback.
 - Thanks to the Slack community for providing essential knowledge.
