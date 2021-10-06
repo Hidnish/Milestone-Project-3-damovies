@@ -229,11 +229,11 @@ input {
 
     background-color: black;
     background: -webkit-gradient(linear, left bottom, left top, from(black), to(transparent)), 
-        url('../imgs/DaMovies_PIC1.jpeg');
+        url('../imgs/damovies1.jpeg');
     background: -o-linear-gradient(left bottom, left top, from(black), to(transparent)), 
-        url('../imgs/DaMovies_PIC1.jpeg');
+        url('../imgs/damovies1.jpeg');
     background: linear-gradient(to top, black, transparent), 
-        url('../imgs/DaMovies_PIC1.jpeg');
+        url('../imgs/damovies1.jpeg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -243,10 +243,10 @@ input {
     height: 80vh;
 
     background-color: black;
-    background: -webkit-gradient(linear, left bottom, left top, from(transparent), to(black)), url('../imgs/DaMovies_PIC2.jpeg');
+    background: -webkit-gradient(linear, left bottom, left top, from(transparent), to(black)), url('../imgs/damovies2.jpeg');
     background: -o-linear-gradient(left bottom, left top, from(transparent), to(black)), 
-    url('../imgs/DaMovies_PIC2.jpeg');
-    background: linear-gradient(to top, transparent, black), url('../imgs/DaMovies_PIC2.jpeg');
+    url('../imgs/damovies2.jpeg');
+    background: linear-gradient(to top, transparent, black), url('../imgs/damovies2.jpeg');
      background-repeat: no-repeat;
      background-position: center;
      background-size: cover;
