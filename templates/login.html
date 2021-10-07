@@ -6,10 +6,12 @@
     <div class="row">
         <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
             <div class="card-panel bg-grey-dark">
+
+                <!-- username -->
                 <div class="row">
 					<div class="input-field col s12">
 						<i class="fas fa-user-plus prefix white-text"></i>
-						<input id="username" name="username" type="text" minlength="5"
+						<input id="username" name="username" type="text" minlength="3"
                             maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
 						<label for="username">Username</label>
 					</div>
