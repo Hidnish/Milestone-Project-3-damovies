@@ -133,6 +133,8 @@
     - Comment has been added
     - Comment has been deleted
 
+*(when visible): Indicates that certain features are limited to users and or website administrator
+
 #### Sign-in Page (Only for NOT signed-in users)
 
 - Form inputs works. 
@@ -273,7 +275,6 @@ Python code was passed trhough [PEP8 Online Check](http://pep8online.com/)
     - iPhone 8
     - MacBook Air
 - [Google mobile-friendly test](https://search.google.com/test/mobile-friendly?id=5Pz7BqGGcZdRd5o9rkxA9A): All pages in the website (except the profile page which was not accessible through the validator) passed the test as mobile friendly
-
 
 
 
