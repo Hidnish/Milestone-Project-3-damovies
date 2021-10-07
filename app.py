@@ -28,6 +28,7 @@ def home():
 def get_movies():
     movies = list(mongo.db.movies.find())
 
+    # convert data in "ID format" into string for display in the website
     for movie in movies:
         user = mongo.db.users.find_one({'_id': movie['created_by']})
         genre = mongo.db.genres.find_one({'_id': movie['genre']})
@@ -42,7 +43,9 @@ def search():
 
     query = request.form.get("query")
     movies = list(mongo.db.movies.find({"$text": {"$search": query}}))
+
     for movie in movies:
+        # convert data in "ID format" into string for display in the website
         user = mongo.db.users.find_one({'_id': movie['created_by']})
         genre = mongo.db.genres.find_one({'_id': movie['genre']})
         movie['created_by'] = user['username']
@@ -60,10 +63,12 @@ def register():
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
+        # if user already exists refresh page
         if existing_user:
             flash("Username already exists")
             return redirect(url_for("register"))
 
+        # check if 'confirm password' corresponds to password
         if password == confirm_password:
             register = {
                 "username": request.form.get("username").lower(),
@@ -73,9 +78,12 @@ def register():
             }
             mongo.db.users.insert_one(register)
 
+            # create session user
             session["user"] = request.form.get("username").lower()
+            # find session user's email to display in the Profile
             user_email = mongo.db.users.find_one(
                 {"username": session['user']})['email']
+
             flash("Registration Successful!")
             return redirect(url_for("profile", username=session["user"],
                                     user_email=user_email))
@@ -127,7 +135,8 @@ def profile(username):
     # Checks if the current user has uploaded any movie
     movie_user = mongo.db.movies.find_one({'created_by': user_id})
 
-    # ----- Look at the bottom of the page for comments -----
+    # convert movie 'created_by' (which is ID format) 
+    # into username (string format) for display in the website
     for movie in movies:
         if movie['created_by'] != user_id:
             continue
@@ -186,13 +195,14 @@ def edit_movie(movie_id):
 
         genre = mongo.db.genres.find_one(
             {'genre_name': request.form.get("genre_name")})
-        # Variable created to prevent name of user who posted the movie from..
-        # ..changing once admin edits it
+        # variable created to prevent name of user who posted the movie from
+        # changing once admin edits it
         movie = mongo.db.movies.find_one(
             {'_id': ObjectId(movie_id)})["created_by"]
         user = mongo.db.users.find_one({'_id': movie})
-        # Variables created to prevent ratings and comments..
-        # ..from disappearing after movie is edited
+
+        # variables created to prevent ratings and comments
+        # from disappearing after movie is edited
         ratings = mongo.db.movies.find_one(
             {"_id": ObjectId(movie_id)})['ratings']
         average = mongo.db.movies.find_one(
@@ -237,6 +247,7 @@ def get_genres():
 @app.route("/add_genre", methods=["GET", "POST"])
 def add_genre():
     if request.method == "POST":
+        # add genre to database
         genre = {
             "genre_name": request.form.get("genre_name")
         }
@@ -250,6 +261,7 @@ def add_genre():
 @app.route("/edit_genre/<genre_id>", methods=["GET", "POST"])
 def edit_genre(genre_id):
     if request.method == "POST":
+        # update existing genre in database
         genre_upd = {
             "genre_name": request.form.get("genre_name")
         }
@@ -265,6 +277,8 @@ def edit_genre(genre_id):
 def delete_genre(genre_id):
     movie_genre = mongo.db.movies.find_one({"genre": ObjectId(genre_id)})
 
+    # if genre is connected to at least a movie,
+    # prevent user from deleting genre
     if movie_genre:
         flash("Remove all movies related to a genre before deleting it")
     else:
@@ -282,24 +296,24 @@ def rate_movie(movie_id, movie_title):
     # variable containing average of ratings for specific movie
     movie_rating_avg = {}
 
-    # Check if user has already reated the movie
+    # check if user has already reated the movie
     existing_rating = mongo.db.movies.find_one(
         {"_id": ObjectId(movie_id), "ratings.user": user_id})
 
-    # https://stackoverflow.com/questions/10522347/mongodb-update-objects-in-a-documents-array-nested-updating
-    # If rating from user already exists, update it
+    # credit: https://stackoverflow.com/questions/10522347/mongodb-update-objects-in-a-documents-array-nested-updating
+    # if rating from user already exists, update it
     if existing_rating:
         mongo.db.movies.update({"_id": ObjectId(movie_id),
                                 "ratings.user": user_id}, {
                                     "$set": {"ratings.$.rating": rating}})
         flash("Rating Updated")
     else:
-        # If user has not rated the movie yet, add new rating
+        # if user has not rated the movie yet, add new rating
         mongo.db.movies.update({"_id": ObjectId(movie_id)}, {"$push": {
             "ratings": {"rating": rating, "user": user_id}}})
         flash("Rating Added")
 
-    # https://stackoverflow.com/questions/34159487/mongodb-calculating-average-of-nested-array-of-objects-attributes
+    # credit: https://stackoverflow.com/questions/34159487/mongodb-calculating-average-of-nested-array-of-objects-attributes
     # Calculate average of ratings for each movie
     avg_ratings = mongo.db.movies.aggregate(
         [{"$unwind": "$ratings"}, {"$group": {
@@ -312,7 +326,7 @@ def rate_movie(movie_id, movie_title):
         else:
             movie_rating_avg = avg
 
-    # https://stackoverflow.com/questions/15666169/python-pymongo-how-to-insert-a-new-field-on-an-existing-document-in-mongo-fro
+    # credit: https://stackoverflow.com/questions/15666169/python-pymongo-how-to-insert-a-new-field-on-an-existing-document-in-mongo-fro
     # Update the field (Object) "average" in movies collection
     mongo.db.movies.update(
         {"_id": ObjectId(movie_id)}, {"$set": {"average": movie_rating_avg}})
@@ -324,7 +338,7 @@ def rate_movie(movie_id, movie_title):
 def add_comment(movie_id):
     comment = request.form.get("comment")
     user = mongo.db.users.find_one({'username': session["user"]})['username']
-
+    # credit: https://stackoverflow.com/questions/27874469/mongodb-push-in-nested-array
     # add comment to comments array
     mongo.db.movies.update({"_id": ObjectId(movie_id)}, {"$push": {
         "comments": {"comment": comment, "user": user}}})
@@ -335,7 +349,7 @@ def add_comment(movie_id):
 
 @app.route("/delete_comment/<movie_id>/<comment_id>/<user_id>")
 def delete_comment(movie_id, comment_id, user_id):
-    # https://stackoverflow.com/questions/27471439/mongodb-using-pull-to-delete-dictionary-in-an-array-sub-document/27471525
+    # credit: https://stackoverflow.com/questions/27471439/mongodb-using-pull-to-delete-dictionary-in-an-array-sub-document/27471525
     # Remove specific comment from "comments" array
     mongo.db.movies.update({"_id": ObjectId(movie_id)}, {
         '$pull': {"comments": {"comment": comment_id, "user": user_id}}})
@@ -344,7 +358,7 @@ def delete_comment(movie_id, comment_id, user_id):
     return redirect(url_for("get_movies"))
 
 
-# Error handlers
+# error handlers
 @app.errorhandler(404)
 def error_400(e):
     return render_template('error.html'), 404
@@ -358,4 +372,4 @@ def error_500(e):
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)
+            debug=False)

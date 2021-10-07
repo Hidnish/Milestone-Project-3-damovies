@@ -6,7 +6,6 @@
     <div class="row card-panel light1">
 
         <!-- movie search bar -->
-
         <form class="col s10 offset-s1 l6 offset-l3" action="{{ url_for('search') }}" method="post">
             <div class="row center-align">
                 <div class="input-field m-0 col s12 m6">
@@ -24,131 +23,128 @@
     </div>
 
     <!-- movie card -->
-
     {% if movies|length > 0 %}
-    <div class="row limit padding-2 movie-margin">
-        {% for movie in movies| sort(attribute='title') %}
-        <div class="col s12 m6 l4 cards">
-            <div class="card">
-                <div class="card-image">
-                        {% if movie.cover_image %}
-                            <img src="{{ movie.cover_image }}" alt="movie image">
-                        {% else %}
-                            <img alt="Deafult image of movie" src="../static/imgs/No-img.jpeg">
-                        {% endif %}
-                </div>
-
-                <!-- movie info-card -->
-
-                <div class="card-content card-movie bg-grey-dark">
-                    <span class="card-title activator white-text thin">
-                        {{ movie.title }}
-                        <i class="fas fa-ellipsis-v right"></i>
-                    </span>
-                    {% if session.user|lower == movie.created_by|lower or session.user|lower == "admin"|lower %}
-                        <a href="{{ url_for('edit_movie', movie_id=movie._id) }}" class="btn-small dark1">Edit</a>
-                        <a href="{{ url_for('delete_movie', movie_id=movie._id) }}" class="btn-small light1 sure">
-                            Delete
-                        </a>
-                    {% endif %}
-                </div>
-                <div class="card-reveal bg-seet-blur white-text thin">
-                    <span class="card-title"><i class="fas fa-times right"></i>
-                        {{ movie.title }}
-                    </span>
-                    <p>
-                        <em>Directed by :</em> <strong>{{ movie.director }}</strong><br>
-                        <em>Year :</em> <strong>{{ movie.year }}</strong><br>
-                        <em>Genre :</em> <strong>{{ movie.genre }}</strong> <br>
-                        <em>Plot :</em> <strong>{{ movie.plot }}</strong> <br><br><br>
-                        <em>Posted by: <strong>{{ movie.created_by }}</strong></em>
-                    </p><br>
-                    <hr>
-
-                    <!-- average rating -->
-
-                    {% if movie.average %}
-                        <p class="title-small center-align">
-                            Average Rating by Users: <strong class="text-gold">{{ movie.average.average|round(1, 'floor') }}/5</strong>
-                        </p>
-                    {% endif %}
-
-                    <!-- add rating section -->
-                    {% if session.user %}
-                        <form class="center-align" method="POST"
-                            action="{{ url_for('rate_movie', movie_id=movie._id, movie_title=movie.title) }}">
-                            <label>
-                                <input class="1" name="rating" value="1" type="radio" required />
-                                <span class="margin-right">1</span>
-                            </label>
-                            <label>
-                                <input class="2" name="rating" value="2" type="radio" />
-                                <span class="margin-right">2</span>
-                            </label>
-                            <label>
-                                <input class="3" name="rating" value="3" type="radio" />
-                                <span class="margin-right">3</span>
-                            </label>
-                            <label>
-                                <input class="4" name="rating" value="4" type="radio" />
-                                <span class="margin-right">4</span>
-                            </label>
-                            <label>
-                                <input class="5" name="rating" value="5" type="radio" />
-                                <span class="margin-right">5</span>
-                            </label><br>
-                            <button type="submit" class="btn-small bg-grey-dark text-shadow margin-top">
-                                Submit rating
-                            </button>
-                        </form>
-                    {% endif %}
-                    <br><br><br><br><br><br>
-
-                    <!-- add comment section -->
-                    {% if session.user %}
-                        <div class="row">
-                            <form class="col s12 center-align" method="POST"
-                                action="{{ url_for('add_comment', movie_id=movie._id) }}">
-                                <div class="col s12 input-field m-0">
-                                    <i class="fas fa-pen prefix"></i>
-                                    <textarea id="comment" name="comment" 
-                                        class="materialize-textarea white-text validate" required></textarea>
-                                    <label for="comment">Leave a comment</label>
-                                </div>
-                                <button type="submit" class="btn-small bg-grey-dark text-shadow">
-                                    Submit Comment
-                                </button>
-                            </form>
-                        </div>
-                    {% endif %}
-
-                    <!-- see other comments section -->
-
-                    {% for comment in movie.comments %}
-                        <div class="row comment-box">
-                            <div class="col s12 m8">
-                                <p><strong>{{ comment["comment"] }}</strong></p>
-                                <p><em>by:</em> <strong>{{ comment["user"] }}</strong></p>
-                            </div>
-                            <div class="col s12 m4">
-                                {% if session.user|lower == comment.user|lower or session.user|lower == "admin"|lower %}
-                                    <a href="{{ url_for('delete_comment', movie_id=movie._id, 
-                                        comment_id=comment['comment'], user_id=comment['user']) }}"
-                                        class="btn-small margin-button light1 sure right">
-                                        Delete
-                                    </a>
+        <div class="row limit padding-2 movie-margin">
+            {% for movie in movies| sort(attribute='title') %}
+                <div class="col s12 m6 l4 cards">
+                    <div class="card">
+                        <div class="card-image">
+                                {% if movie.cover_image %}
+                                    <img src="{{ movie.cover_image }}" alt="movie image">
+                                {% else %}
+                                    <img alt="Deafult image of movie" src="../static/imgs/No-img.jpeg">
                                 {% endif %}
-                            </div>
                         </div>
-                    {% endfor %}
 
+                        <!-- movie info-card -->
+                        <div class="card-content card-movie bg-grey-dark">
+                            <span class="card-title activator white-text thin">
+                                {{ movie.title }}
+                                <i class="fas fa-ellipsis-v right"></i>
+                            </span>
+                            {% if session.user|lower == movie.created_by|lower or session.user|lower == "admin"|lower %}
+                                <a href="{{ url_for('edit_movie', movie_id=movie._id) }}" class="btn-small dark1">Edit</a>
+                                <a href="{{ url_for('delete_movie', movie_id=movie._id) }}" class="btn-small light1 sure">
+                                    Delete
+                                </a>
+                            {% endif %}
+                        </div>
+                        <div class="card-reveal bg-seet-blur white-text thin">
+                            <span class="card-title"><i class="fas fa-times right"></i>
+                                {{ movie.title }}
+                            </span>
+                            <p>
+                                <em>Directed by :</em> <strong>{{ movie.director }}</strong><br>
+                                <em>Year :</em> <strong>{{ movie.year }}</strong><br>
+                                <em>Genre :</em> <strong>{{ movie.genre }}</strong> <br>
+                                <em>Plot :</em> <strong>{{ movie.plot }}</strong> <br><br><br>
+                                <em>Posted by: <strong>{{ movie.created_by }}</strong></em>
+                            </p><br>
+                            <hr>
+
+                            <!-- average rating -->
+                            {% if movie.average %}
+                                <p class="title-small center-align">
+                                    Average Rating by Users: <strong class="text-gold">{{ movie.average.average|round(1, 'floor') }}/5</strong>
+                                </p>
+                            {% endif %}
+
+                            <!-- add rating section -->
+                            {% if session.user %}
+                                <form class="center-align" method="POST"
+                                    action="{{ url_for('rate_movie', movie_id=movie._id, movie_title=movie.title) }}">
+                                    <label>
+                                        <input class="1" name="rating" value="1" type="radio" required />
+                                        <span class="margin-right">1</span>
+                                    </label>
+                                    <label>
+                                        <input class="2" name="rating" value="2" type="radio" />
+                                        <span class="margin-right">2</span>
+                                    </label>
+                                    <label>
+                                        <input class="3" name="rating" value="3" type="radio" />
+                                        <span class="margin-right">3</span>
+                                    </label>
+                                    <label>
+                                        <input class="4" name="rating" value="4" type="radio" />
+                                        <span class="margin-right">4</span>
+                                    </label>
+                                    <label>
+                                        <input class="5" name="rating" value="5" type="radio" />
+                                        <span class="margin-right">5</span>
+                                    </label><br>
+                                    <button type="submit" class="btn-small bg-grey-dark text-shadow margin-top">
+                                        Submit rating
+                                    </button>
+                                </form>
+                            {% endif %}
+                            <br><br><br><br><br><br>
+
+                            <!-- add comment section -->
+                            {% if session.user %}
+                                <div class="row">
+                                    <form class="col s12 center-align" method="POST"
+                                        action="{{ url_for('add_comment', movie_id=movie._id) }}">
+                                        <div class="col s12 input-field m-0">
+                                            <i class="fas fa-pen prefix"></i>
+                                            <textarea id="comment" name="comment" 
+                                                class="materialize-textarea white-text validate" required></textarea>
+                                            <label for="comment">Leave a comment</label>
+                                        </div>
+                                        <button type="submit" class="btn-small bg-grey-dark text-shadow">
+                                            Submit Comment
+                                        </button>
+                                    </form>
+                                </div>
+                            {% endif %}
+
+                            <!-- see other comments section -->
+
+                            {% for comment in movie.comments %}
+                                <div class="row comment-box">
+                                    <div class="col s12 m8">
+                                        <p><strong>{{ comment["comment"] }}</strong></p>
+                                        <p><em>by:</em> <strong>{{ comment["user"] }}</strong></p>
+                                    </div>
+                                    <div class="col s12 m4">
+                                        {% if session.user|lower == comment.user|lower or session.user|lower == "admin"|lower %}
+                                            <a href="{{ url_for('delete_comment', movie_id=movie._id, 
+                                                comment_id=comment['comment'], user_id=comment['user']) }}"
+                                                class="btn-small margin-button light1 sure right">
+                                                Delete
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </div>
-    {% else%}
-    <h4 class="center-align mild-red-text extra-mg-bt">No movie found</h2>
-        {% endif%}
+        {% else%}
+            <h4 class="center-align mild-red-text extra-mg-bt">No movie found</h2>
+    {% endif%}
 
-        {% endblock %}
+    {% endblock %}

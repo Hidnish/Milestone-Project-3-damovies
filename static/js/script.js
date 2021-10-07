@@ -1,6 +1,8 @@
 $(document).ready(function () {
     $('.sidenav').sidenav({edge: "right"});
     $('select').formSelect();
+
+    /* triggers confirmation pop up when user wants to sign out or delete an item */
     $('.sure').on('click', function areYouSure() {
         if ($(this).hasClass("logout")) {
           return confirm("Are you sure you want to sign out?");
@@ -9,6 +11,7 @@ $(document).ready(function () {
         }
     });
     
+    /* adjust size of buttons based on screen size */
     if($(window).width() < 590) {
       $('.btn-genre').removeClass('btn');
       $('.btn-genre').addClass('btn-small');
@@ -16,7 +19,9 @@ $(document).ready(function () {
       $('.btn-genre').removeClass('btn-small');
       $('.btn-genre').addClass('btn');
       }
-  
+
+    /* code taken from: Code institute - task manager project,
+    requires the user to select movie genre from dropdown menu before adding or editing a movie */ 
     validateMaterializeSelect();
     function validateMaterializeSelect() {
         let classValid = { "border-bottom": "1px solid #4caf50", "box-shadow": "0 1px 0 0 #4caf50" };

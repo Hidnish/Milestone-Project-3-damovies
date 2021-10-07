@@ -7,6 +7,7 @@
     <div class="row movie-margin">
         <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('add_movie') }}">
             <div class="card-panel black">
+
                 <!-- genre selection -->
                 <div class="row">
                     <div class="input-field col s12">
@@ -20,6 +21,7 @@
                         <label for="genre_name">Movie Genre</label>
                     </div>
                 </div>
+
                 <!-- movie title -->
                 <div class="row">
 					<div class="input-field col s12">
@@ -29,6 +31,7 @@
 						<label for="title">Title</label>
 					</div>
                 </div>
+
                 <!-- director -->
                 <div class="row">
 					<div class="input-field col s12">
@@ -38,6 +41,7 @@
 						<label for="director">Director</label>
 					</div>
                 </div>
+
                 <!-- year -->
                 <div class="row">
                     <div class="input-field col s12">
@@ -47,6 +51,7 @@
                         <label for="year_release">Year of release: <em>Format "yyyy"</em></label>
                     </div>
                 </div>
+
                 <!-- plot description -->
                 <div class="row">
                     <div class="input-field col s12">
@@ -56,6 +61,7 @@
                         <label for="plot">Plot</label>
                     </div>
                 </div>
+
                 <!-- image link -->
                 <div class="row">
                     <div class="input-field col s12">
@@ -65,6 +71,7 @@
                         <label for="cover_image">Movie cover image: <em> URL (optional) </em></label>
                     </div>
                 </div>
+                
                 <!-- submit button -->
                 <div class="row center-align">
                     <button type="submit" class="btn-large bg-grey-dark text-shadow extra-margin2">
