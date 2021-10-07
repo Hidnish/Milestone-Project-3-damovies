@@ -38,7 +38,6 @@ This is "DaMovie", a website dedicated to cinema lovers who want to share opinio
     - Unsolved bugs
 - [Deployment](#deployment)
     - Requirements to deploy
-    - Github pages
     - Forking the GitHub Repository
     - Making a local clone of the GitHub Project
     - Making a local clone of the GitHub Project
@@ -138,9 +137,9 @@ Combining black and gold seemed like the right choice to create a classy cinemat
 
 ### Wireframes 
 
-- [Desktop](static/docs/wireframes/desktop.png) 
-- [Tablet](static/docs/wireframes/tablet.png) 
-- [Mobile](static/docs/wireframes/mobile.png) 
+- [Desktop](static/docs/wireframes/desktop.pdf) 
+- [Tablet](static/docs/wireframes/tablet.pdf) 
+- [Mobile](static/docs/wireframes/mobile.pdf) 
 
 
 <br>
@@ -447,20 +446,6 @@ Testing documentation, including User Stories, can be found here: [Testing](stat
 * A template folder (To link app routes using Flask)
 * A could database (MongoDB Atlas)
 
-
-### GitHub Pages
-
-<br>
-
-  1. Log in to GitHub and locate the GitHub Repository
-  2. At the top of the Repository (not top of page), locate the "Settings" Button on the menu ("gear" icon).
-  3. Scroll down the Settings page until you locate the "GitHub Pages" Section.
-  4. You will find the current message: "Pages settings now has its own dedicated tab! Check it out here!". Click the link.
-  5. Under "Source", click the dropdown called "None" and select "Master/Main Branch".
-  6. The page will automatically refresh.
-  7. Go back to step 4, once you have clicked the link, you will find the published site link.
-
-<br>
 
 ### Forking the GitHub Repository
 
