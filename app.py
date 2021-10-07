@@ -132,10 +132,10 @@ def profile(username):
         {"username": session["user"]})["username"]
     user_id = mongo.db.users.find_one(
         {"username": session["user"]})["_id"]
-    # Checks if the current user has uploaded any movie
+    # checks if the current user has uploaded any movie
     movie_user = mongo.db.movies.find_one({'created_by': user_id})
 
-    # convert movie 'created_by' (which is ID format) 
+    # convert movie 'created_by' (which is ID format)
     # into username (string format) for display in the website
     for movie in movies:
         if movie['created_by'] != user_id:
@@ -300,7 +300,7 @@ def rate_movie(movie_id, movie_title):
     existing_rating = mongo.db.movies.find_one(
         {"_id": ObjectId(movie_id), "ratings.user": user_id})
 
-    # credit: https://stackoverflow.com/questions/10522347/mongodb-update-objects-in-a-documents-array-nested-updating
+    # based on: https://stackoverflow.com/questions/10522347/mongodb-update-objects-in-a-documents-array-nested-updating
     # if rating from user already exists, update it
     if existing_rating:
         mongo.db.movies.update({"_id": ObjectId(movie_id),
@@ -313,7 +313,7 @@ def rate_movie(movie_id, movie_title):
             "ratings": {"rating": rating, "user": user_id}}})
         flash("Rating Added")
 
-    # credit: https://stackoverflow.com/questions/34159487/mongodb-calculating-average-of-nested-array-of-objects-attributes
+    # based on: https://stackoverflow.com/questions/34159487/mongodb-calculating-average-of-nested-array-of-objects-attributes
     # Calculate average of ratings for each movie
     avg_ratings = mongo.db.movies.aggregate(
         [{"$unwind": "$ratings"}, {"$group": {
@@ -326,7 +326,7 @@ def rate_movie(movie_id, movie_title):
         else:
             movie_rating_avg = avg
 
-    # credit: https://stackoverflow.com/questions/15666169/python-pymongo-how-to-insert-a-new-field-on-an-existing-document-in-mongo-fro
+    # based on: https://stackoverflow.com/questions/15666169/python-pymongo-how-to-insert-a-new-field-on-an-existing-document-in-mongo-fro
     # Update the field (Object) "average" in movies collection
     mongo.db.movies.update(
         {"_id": ObjectId(movie_id)}, {"$set": {"average": movie_rating_avg}})
@@ -338,7 +338,7 @@ def rate_movie(movie_id, movie_title):
 def add_comment(movie_id):
     comment = request.form.get("comment")
     user = mongo.db.users.find_one({'username': session["user"]})['username']
-    # credit: https://stackoverflow.com/questions/27874469/mongodb-push-in-nested-array
+    # based on: https://stackoverflow.com/questions/27874469/mongodb-push-in-nested-array
     # add comment to comments array
     mongo.db.movies.update({"_id": ObjectId(movie_id)}, {"$push": {
         "comments": {"comment": comment, "user": user}}})
@@ -349,8 +349,8 @@ def add_comment(movie_id):
 
 @app.route("/delete_comment/<movie_id>/<comment_id>/<user_id>")
 def delete_comment(movie_id, comment_id, user_id):
-    # credit: https://stackoverflow.com/questions/27471439/mongodb-using-pull-to-delete-dictionary-in-an-array-sub-document/27471525
-    # Remove specific comment from "comments" array
+    # based on: https://stackoverflow.com/questions/27471439/mongodb-using-pull-to-delete-dictionary-in-an-array-sub-document/27471525
+    # remove specific comment from "comments" array
     mongo.db.movies.update({"_id": ObjectId(movie_id)}, {
         '$pull': {"comments": {"comment": comment_id, "user": user_id}}})
 
