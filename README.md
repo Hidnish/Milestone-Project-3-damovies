@@ -10,7 +10,7 @@
 
 <br>
 
-This is "DaMovie", a website dedicated to cinema lovers who want to share opinions on their favourite movies and discover new ones! Once they have created their account, users can add, comment and rate movies in the catalogue.
+This is "DaMovies", a website dedicated to cinema lovers who want to share opinions on their favourite movies and discover new ones! Once they have created their account, users can add, comment and rate movies in the catalogue.
 
 ---
 
