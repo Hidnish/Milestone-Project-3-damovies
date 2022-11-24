@@ -2,7 +2,7 @@
 
 <img src="static/docs/readme_imgs/Responsive.png" alt="website display" width="70%"/>
 
-[Link to the live site on Heroku](http://milestone-project-3-damovies.herokuapp.com/)
+[Link to the live site on Render](https://mp3damovies.onrender.com)
 
 <br>
 
@@ -526,7 +526,7 @@ Testing documentation, including User Stories, can be found here: [Testing](stat
 
 <br>
 
-### Remote Deployment on Heroku
+### Remote Deployment on Heroku (Migrated to: Render.com)
 
 <br>
 
